@@ -105,7 +105,7 @@ export function EcosystemSection() {
     }
 
     function frame() {
-      if (!canvas) return;
+      if (!canvas || !ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       tick++;
 
