@@ -109,6 +109,7 @@ export function LiveNetworkSection() {
       (1 - t) * (1 - t) * p0 + 2 * (1 - t) * t * p1 + t * t * p2;
 
     function frame() {
+      if (!canvas || !ctx) return;
       const s = stateRef.current;
       const { cx, cy, mouse } = s;
       const W = canvas.width, H = canvas.height;
