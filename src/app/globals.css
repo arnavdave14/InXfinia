@@ -1,26 +1,275 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-inter: var(--font-inter);
+  --font-syne: var(--font-syne);
+  
+  --color-primary: #5B21B6;
+  --color-secondary: #1D4ED8;
+  --color-tertiary: #F43F5E;
+  
+  --color-surface: #faf8ff;
+  --color-on-surface: #1a1b21;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.animate-orbit-custom {
+  animation: orbit calc(var(--duration)*1s) linear infinite;
+  animation-delay: var(--delay, 0s);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(var(--radius)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(var(--radius)) rotate(calc((var(--angle) * -1deg) - 360deg));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-inter), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-syne), sans-serif;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Luminous Mesh Background (Light Mode)
+   ────────────────────────────────────────────────────────── */
+.mesh-bg {
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--color-surface);
+  /* Optional: Light noise overlay if desired */
+  /* background-image: url("data:image/svg+xml,..."); */
+}
+
+/* Base properties for light-mode mesh orbs */
+.mesh-bg .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  animation: float 20s infinite alternate ease-in-out;
+}
+
+.mesh-bg .orb-1 {
+  background-color: rgba(91, 33, 182, 0.4); /* Primary */
+  width: 50vw;
+  height: 50vh;
+  top: -10%;
+  left: 20%;
+  animation-duration: 25s;
+}
+
+.mesh-bg .orb-2 {
+  background-color: rgba(29, 78, 216, 0.3); /* Secondary */
+  width: 60vw;
+  height: 60vh;
+  bottom: 0%;
+  right: -10%;
+  animation-duration: 28s;
+  animation-direction: alternate-reverse;
+}
+
+.mesh-bg .orb-3 {
+  background-color: rgba(244, 63, 94, 0.2); /* Tertiary */
+  width: 40vw;
+  height: 40vh;
+  top: 40%;
+  left: 30%;
+  animation-duration: 35s;
+}
+
+.mesh-bg .orb-4 {
+  background-color: rgba(91, 33, 182, 0.2);
+  width: 45vw;
+  height: 45vh;
+  top: 20%;
+  right: 20%;
+  animation-duration: 32s;
+}
+
+.mesh-bg .orb-5 {
+  background-color: rgba(29, 78, 216, 0.2);
+  width: 55vw;
+  height: 55vh;
+  bottom: 10%;
+  left: 10%;
+  animation-duration: 40s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(5%, -5%) scale(1.1);
+  }
+  66% {
+    transform: translate(-3%, 8%) scale(0.9);
+  }
+  100% {
+    transform: translate(-5%, -2%) scale(1.05);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Glassmorphism Utilities (Atelier Nova)
+   ────────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(9, 10, 15, 0.07);
+  box-shadow: 0 20px 40px -15px rgba(9, 10, 15, 0.04);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(9, 10, 15, 0.1);
+  box-shadow: 0 32px 64px -16px rgba(91, 33, 182, 0.08), 0 12px 24px -8px rgba(9, 10, 15, 0.04);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Buttons
+   ────────────────────────────────────────────────────────── */
+.btn-primary {
+  background-color: #090A0F;
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(9, 10, 15, 0.1);
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(91, 33, 182, 0.25);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.8);
+  color: #090A0F;
+  border: 1px solid rgba(9, 10, 15, 0.12);
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: #ffffff;
+  color: var(--color-primary);
+  border-color: rgba(91, 33, 182, 0.3);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Typography Utilities
+   ────────────────────────────────────────────────────────── */
+.label-caps {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(91, 33, 182, 0.15);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #090A0F;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Lenis Smooth Scrolling Fixes
+   ────────────────────────────────────────────────────────── */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Ecosystem Section: hide map nodes & beams by default before GSAP animates them */
+.map-node {
+  opacity: 0;
+  transform: scale(0);
+}
+.map-beam-left {
+  clip-path: inset(0 100% 0 0);
+}
+.map-beam-right {
+  clip-path: inset(0 0 0 100%);
+}
+
+/* EcosystemSection — pulsing rings around central hub */
+@keyframes pulse-ring {
+  0%   { transform: scale(1);    opacity: 0.5; }
+  50%  { transform: scale(1.12); opacity: 0.15; }
+  100% { transform: scale(1);    opacity: 0.5; }
+}
+
+/* EcosystemSection — hub breathing glow */
+@keyframes hub-breathe {
+  0%, 100% { box-shadow: 0 30px 60px -15px rgba(91,33,182,0.4), 0 0 0 1px rgba(91,33,182,0.1); }
+  50%       { box-shadow: 0 30px 80px -10px rgba(91,33,182,0.65), 0 0 40px 4px rgba(91,33,182,0.2); }
 }
