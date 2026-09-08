@@ -9,6 +9,7 @@ import { EcosystemSection } from "@/components/EcosystemSection";
 import { CoreValuesCards } from "@/components/FeatureList";
 import { TeamSection } from "@/components/Testimonials";
 import { CTASection } from "@/components/CTASection";
+import { ScrollTextGradient } from "@/components/ScrollTextGradient";
 
 export default function Home() {
   const [ready, setReady] = useState(false);
@@ -61,6 +62,7 @@ export default function Home() {
         <MarqueeBanner />
         <StatsSection />
         <EcosystemSection />
+        <ScrollTextGradient text="Build anything. We handle the complexity." />
         <CoreValuesCards />
         <TeamSection />
         <CTASection />

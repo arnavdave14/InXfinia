@@ -102,7 +102,7 @@ export default function PlatformPage() {
       </section>
 
       {/* Sticky Stacking Cards Section */}
-      <section className="relative w-full max-w-6xl mx-auto px-4 py-32 z-20 flex flex-col gap-12">
+      <section className="relative w-full max-w-6xl mx-auto px-4 pt-32 pb-[50vh] z-20 flex flex-col gap-12">
         {cards.map((card, index) => {
           // Calculate the top offset based on index to create the stacking effect
           const topOffset = 140 + (index * 40); // Base top offset + staggering

@@ -20,7 +20,7 @@ export function ScrollToTop() {
   const [percent, setPercent] = useState(0);
 
   useEffect(() => {
-    return smoothProgress.onChange((latest) => {
+    return smoothProgress.on("change", (latest) => {
       setPercent(Math.round(latest * 100));
       // Show button after scrolling down a bit (e.g., 5%)
       if (latest > 0.05) {

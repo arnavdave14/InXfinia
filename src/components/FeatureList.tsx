@@ -158,7 +158,7 @@ export function CoreValuesCards() {
 
   return (
     <section ref={containerRef} className="relative z-10 w-full bg-transparent">
-      <div ref={triggerRef} className="px-8 md:px-16 py-20 w-full max-w-7xl mx-auto flex flex-col justify-center min-h-screen">
+      <div ref={triggerRef} className="px-8 md:px-16 py-32 w-full max-w-7xl mx-auto flex flex-col">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">

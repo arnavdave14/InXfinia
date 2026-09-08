@@ -17,14 +17,6 @@ const SEQUENCE = [
     duration: 1400,
   },
   {
-    text: "Initializing",
-    sub: null as string | null,
-    size: "text-[clamp(1.8rem,4.5vw,3.5rem)]",
-    weight: "font-normal",
-    color: "text-[#090A0F]/70",
-    duration: 1400,
-  },
-  {
     text: "Infinite possibilities",
     sub: "of successful solutions." as string | null,
     size: "text-[clamp(1.6rem,3.8vw,3.2rem)]",
@@ -45,7 +37,7 @@ const SEQUENCE = [
 /* Word-by-word spring slide-up */
 function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) {
   return (
-    <span className={`inline-flex flex-wrap justify-center gap-x-[0.3em] ${className}`}>
+    <span className={`flex flex-wrap justify-center items-center max-w-full gap-x-[0.3em] ${className}`}>
       {text.split(" ").map((word, i) => (
         <span key={i} className="overflow-hidden inline-block">
           <motion.span
@@ -54,7 +46,11 @@ function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?:
             animate={{ y: "0%", opacity: 1 }}
             transition={{ duration: 0.6, delay: delay + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            {word}
+            {word === "InXfinia" ? (
+              <>In<span className="text-[#5B21B6]">X</span>finia</>
+            ) : (
+              word
+            )}
           </motion.span>
         </span>
       ))}
@@ -130,7 +126,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
           </div>
 
           {/* ── Text stage ── */}
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-8">
+          <div className="relative z-10 w-full max-w-[90vw] mx-auto flex flex-col items-center justify-center text-center px-4 md:px-8 overflow-hidden">
             <AnimatePresence mode="wait">
               {showContent && (
                 <motion.div
@@ -139,7 +135,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.22 }}
-                  className="flex flex-col items-center gap-3"
+                  className="flex flex-col items-center gap-3 w-full"
                 >
                   {/* Step accent line */}
                   {!isLast && (
@@ -152,13 +148,13 @@ export function Preloader({ onComplete }: PreloaderProps) {
                   )}
 
                   {/* Main text */}
-                  <h1 className={`font-syne leading-[0.95] tracking-tight ${current.size} ${current.weight} ${current.color}`}>
+                  <h1 className={`font-syne leading-[0.95] tracking-tight text-center w-full max-w-full ${current.size} ${current.weight} ${current.color}`}>
                     <WordReveal text={current.text} delay={0.05} />
                   </h1>
 
                   {/* Sub-line (step 3 only) */}
                   {current.sub && (
-                    <p className="font-syne text-[clamp(1.2rem,3vw,2.5rem)] font-light text-[#090A0F]/35 leading-tight">
+                    <p className="font-syne text-[clamp(1.2rem,3vw,2.5rem)] font-light text-[#090A0F]/60 leading-tight text-center w-full max-w-full mt-2">
                       <WordReveal text={current.sub} delay={0.35} />
                     </p>
                   )}
@@ -196,12 +192,12 @@ export function Preloader({ onComplete }: PreloaderProps) {
           </div>
 
           {/* ── Progress bar ── */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[220px] z-10">
-            <div className="flex justify-between font-mono text-[10px] text-[#090A0F]/28 tracking-widest uppercase mb-1.5">
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[240px] z-10">
+            <div className="flex justify-between font-mono text-[12px] text-black font-semibold tracking-widest uppercase mb-2">
               <span>InXfinia</span>
               <span>{Math.round(progress)}%</span>
             </div>
-            <div className="w-full h-[2px] bg-black/[0.06] rounded-full overflow-hidden">
+            <div className="w-full h-[3px] bg-black/10 rounded-full overflow-hidden">
               <motion.div
                 className="h-full rounded-full"
                 style={{

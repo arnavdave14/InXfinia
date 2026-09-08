@@ -617,14 +617,18 @@ export default function DevelopersPage() {
           </div>
           <div className="relative z-10">
             <span className="font-mono text-xs uppercase tracking-[0.3em] text-violet-500 mb-3 block">Live Playground</span>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
               <h2 className="font-syne text-[clamp(2.5rem,5vw,5rem)] font-extrabold text-[#090A0F] leading-tight tracking-tight">
                 Type your name.<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-emerald-500">Watch it run.</span>
               </h2>
-              <p className="font-mono text-xs text-black/40 max-w-xs leading-relaxed">
-                Scroll to watch the code write itself. Type your name in line 7, hit Run — and see the AI respond to you personally.
-              </p>
+              <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-5 max-w-sm flex items-start gap-4 shadow-lg shadow-emerald-500/5 backdrop-blur-md transition-transform hover:scale-[1.02]">
+                <Terminal className="text-emerald-600 shrink-0 mt-1" size={20} />
+                <p className="font-medium text-sm text-[#090A0F]/90 leading-relaxed">
+                  <strong className="text-emerald-700 font-bold block mb-1 uppercase tracking-wider text-xs">Interactive Demo</strong>
+                  Scroll to watch the code write itself. Type your name in line 7, hit <span className="inline-block bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded mx-0.5">▶ Run</span> and see the AI respond to you personally.
+                </p>
+              </div>
             </div>
             <VSCodePlayground />
           </div>
