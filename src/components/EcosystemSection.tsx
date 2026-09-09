@@ -98,11 +98,6 @@ export function EcosystemSection() {
           ...gsap.utils.toArray<HTMLElement>(".eco-metric", c),
         ].filter(Boolean) as HTMLElement[];
 
-      const spineNodes  = gsap.utils.toArray<HTMLElement>(".eco-spine-node");
-      const ringsOuter  = gsap.utils.toArray<HTMLElement>(".eco-ring-outer");
-      const ringsMid    = gsap.utils.toArray<HTMLElement>(".eco-ring-mid");
-      const energyOrb   = sectionRef.current!.querySelector<HTMLElement>(".eco-energy-orb");
-
       /* ── Initial states ─────────────────────────────────────── */
 
       // Keywords: overlay clipped away (hidden behind right wall)
@@ -119,11 +114,6 @@ export function EcosystemSection() {
         if (g) gsap.set(g, { x: "-110%", opacity: 0 });
       });
 
-      // Spine
-      gsap.set(spineNodes, { scale: 0.3, opacity: 0.15 });
-      gsap.set([ringsOuter, ringsMid], { scale: 0.1, opacity: 0 });
-      if (energyOrb) gsap.set(energyOrb, { top: NODE_TOPS[0], opacity: 0 });
-
       /* ── Master pinned timeline ─────────────────────────────── */
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -136,38 +126,9 @@ export function EcosystemSection() {
         },
       });
 
-      // Fade in the energy orb
-      tl.to(energyOrb ?? {}, { opacity: 1, duration: 0.4 }, 0);
-
       PANELS.forEach((_, i) => {
         const L = `p${i}`;
         const X = `x${i}`;
-
-        /* ── Energy orb travels to node ─────────────────────── */
-        if (energyOrb) {
-          tl.to(
-            energyOrb,
-            { top: NODE_TOPS[i], duration: i === 0 ? 0.01 : 0.9, ease: "power2.inOut" },
-            L
-          );
-        }
-
-        /* ── Spine node activates ────────────────────────────── */
-        tl.to(spineNodes[i], { scale: 1.5, opacity: 1, duration: 0.4, ease: "back.out(3)" }, L);
-
-        /* ── Sonar rings burst ───────────────────────────────── */
-        tl.fromTo(
-          ringsMid[i],
-          { scale: 0.1, opacity: 0.6 },
-          { scale: 4, opacity: 0, duration: 1.5, ease: "power2.out" },
-          `${L}+=0.05`
-        );
-        tl.fromTo(
-          ringsOuter[i],
-          { scale: 0.1, opacity: 0.3 },
-          { scale: 7, opacity: 0, duration: 2.2, ease: "power2.out" },
-          `${L}+=0.05`
-        );
 
         /* ── KEYWORD HIGHLIGHT — clip-path LEFT → RIGHT wipe ─── */
         tl.to(
@@ -245,9 +206,6 @@ export function EcosystemSection() {
             { x: -65, y: -20, opacity: 0, scale: 0.9, duration: 0.9, ease: "power3.in" },
             `${X}+=0.06`
           );
-
-          // Spine node dims
-          tl.to(spineNodes[i], { scale: 0.3, opacity: 0.15, duration: 0.35 }, X);
         }
       });
     }, sectionRef);
@@ -385,71 +343,8 @@ export function EcosystemSection() {
           </p>
         </div>
 
-        {/* ══════ CENTRE — Spine ════════════════════════════════ */}
-        <div
-          className="hidden lg:block relative flex-shrink-0 h-full"
-          style={{ width: "4rem" }}
-        >
-          {/* Track */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2"
-            style={{
-              top: NODE_TOPS[0],
-              bottom: `${100 - parseInt(NODE_TOPS[PANELS.length - 1])}%`,
-              width: "1px",
-              background:
-                "linear-gradient(to bottom, transparent, rgba(91,33,182,0.15) 20%, rgba(91,33,182,0.15) 80%, transparent)",
-            }}
-          />
-
-          {/* Clean energy orb */}
-          <div
-            className="eco-energy-orb absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 rounded-full"
-            style={{
-              width: "10px",
-              height: "10px",
-              background: "radial-gradient(circle, #fff 0%, #5B21B6 80%)",
-              boxShadow: `0 0 12px rgba(91,33,182,0.4)`, // Subdued
-              top: NODE_TOPS[0],
-            }}
-          />
-
-          {/* Nodes */}
-          {PANELS.map((panel, i) => (
-            <div
-              key={panel.id}
-              className="eco-spine-node absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-              style={{ top: NODE_TOPS[i], width: "3rem", height: "3rem" }}
-            >
-              <div
-                className="eco-ring-outer absolute rounded-full border"
-                style={{
-                  width: "2.6rem",
-                  height: "2.6rem",
-                  borderColor: `rgba(${panel.accentRgb},0.2)`,
-                }}
-              />
-              <div
-                className="eco-ring-mid absolute rounded-full border"
-                style={{
-                  width: "1.5rem",
-                  height: "1.5rem",
-                  borderColor: `rgba(${panel.accentRgb},0.4)`,
-                }}
-              />
-              {/* Clean diamond node */}
-              <div
-                className="relative z-10 rotate-45"
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  background: `rgba(${panel.accentRgb},1)`,
-                  boxShadow: `0 0 8px rgba(${panel.accentRgb},0.4)`, // Subdued
-                }}
-              />
-            </div>
-          ))}
-        </div>
+        {/* ══════ CENTRE — Spacer (Spine Removed) ════════════════════════════════ */}
+        <div className="hidden lg:block relative flex-shrink-0 h-full" style={{ width: "4rem" }}></div>
 
         {/* ══════ RIGHT — Stacked reveal cards ════════════════ */}
         <div className="flex-1 min-w-0 relative h-full flex items-center justify-end">
