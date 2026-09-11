@@ -48,7 +48,7 @@ export function StatsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative z-10 px-8 md:px-16 py-28 md:py-40 perspective-[1000px]">
+    <section ref={ref} className="relative z-10 px-4 md:px-8 lg:px-16 py-20 md:py-28 lg:py-40 perspective-[1000px]">
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -60,11 +60,11 @@ export function StatsSection() {
         <span className="text-xs font-bold uppercase tracking-widest text-[#111111]">By the numbers</span>
       </motion.div>
 
-      <div ref={numbersRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div ref={numbersRef} className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         {STATS.map((stat, i) => (
           <div
             key={i}
-            className="stat-item relative rounded-3xl p-10 md:p-14 flex flex-col gap-6 overflow-hidden border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.05)] bg-white/30 backdrop-blur-3xl transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] group transform-gpu"
+            className="stat-item relative rounded-3xl p-6 md:p-8 lg:p-14 flex flex-col gap-4 lg:gap-6 overflow-hidden border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.05)] bg-white/30 backdrop-blur-3xl transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] group transform-gpu"
             style={{ opacity: 0 }}
           >
             {/* Ambient hover glow */}

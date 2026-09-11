@@ -118,7 +118,7 @@ export function MainNavbar() {
         </Link>
 
         {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-0.5 flex-1 justify-center">
+        <div className="hidden lg:flex items-center gap-0.5 flex-1 justify-center">
           {NAV_LINKS.map((l) => {
             const isActive = pathname === l.href;
             return (
@@ -136,7 +136,7 @@ export function MainNavbar() {
         <div className="flex items-center gap-3 shrink-0">
 
           {/* Desktop CTA — hidden on mobile via wrapper div */}
-          <div className="hidden md:flex">
+          <div className="hidden lg:flex">
             <Link href="/contact" className="btn-primary">
               Get Started <ArrowUpRight size={14} />
             </Link>
@@ -144,7 +144,7 @@ export function MainNavbar() {
 
           {/* ── Hamburger (mobile only) — no box, pure lines, GSAP morph ── */}
           <button
-            className="md:hidden flex flex-col items-center justify-center w-8 h-8 gap-0 outline-none border-none bg-transparent p-0"
+            className="lg:hidden flex flex-col items-center justify-center w-8 h-8 gap-0 outline-none border-none bg-transparent p-0"
             onClick={toggleMenu}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             style={{ cursor: "pointer" }}
@@ -168,7 +168,7 @@ export function MainNavbar() {
       {/* ── Mobile dropdown — GSAP controlled, hidden by default ── */}
       <div
         ref={dropdownRef}
-        className="md:hidden flex-col overflow-hidden border-t border-black/5"
+        className="lg:hidden flex-col overflow-hidden border-t border-black/5"
         style={{ display: "none", height: 0, opacity: 0 }}
       >
         <div className="flex flex-col px-6 pt-2 pb-6 bg-[#faf8ff]" style={{ borderRadius: "0 0 2rem 2rem" }}>

@@ -58,14 +58,14 @@ export function Footer() {
       </div>
 
       {/* Main Footer Card - Sits flush at the bottom */}
-      <div className="relative z-10 w-full max-w-[96%] xl:max-w-[1400px] bg-[#222222] rounded-t-[2.5rem] p-10 md:p-14 lg:px-16 lg:pt-16 lg:pb-12 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] border-t border-white/5 transition-all duration-500">
+      <div className="relative z-10 w-full max-w-[96%] xl:max-w-[1400px] bg-[#222222] rounded-t-[2.5rem] p-6 md:p-10 lg:px-16 lg:pt-16 lg:pb-12 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] border-t border-white/5 transition-all duration-500">
         
         {/* Main Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-24">
           
           {/* Left: Newsletter */}
           <div className="lg:col-span-5 flex flex-col justify-start pr-0 lg:pr-8 group">
-            <h3 className="text-[32px] text-[#f4f4f5] mb-2 tracking-tight group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all duration-300" style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}>Don't miss out</h3>
+            <h3 className="text-[28px] md:text-[32px] text-[#f4f4f5] mb-2 tracking-tight group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all duration-300" style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}>Don't miss out</h3>
             <p className="text-[#888888] text-[14px] mb-8 font-sans group-hover:text-white transition-all duration-300">Enter your email for news and updates</p>
             
             <form onSubmit={(e) => e.preventDefault()} className="relative w-full max-w-[360px] group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300">
@@ -87,7 +87,7 @@ export function Footer() {
           </div>
 
           {/* Right: Links Grid */}
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8 pl-0 lg:pl-10 mt-6 lg:mt-0">
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 pl-0 lg:pl-10 mt-6 lg:mt-0">
             {Object.entries(LINKS).map(([cat, links]) => (
               <div key={cat} className="flex flex-col">
                 <h4 className="text-[12px] font-bold tracking-wider text-[#ffffff] mb-6 uppercase hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] cursor-default transition-all duration-300">{cat}</h4>

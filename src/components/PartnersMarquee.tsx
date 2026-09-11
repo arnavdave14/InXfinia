@@ -63,7 +63,7 @@ export function MarqueeBanner() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative z-10 -rotate-[2deg] my-20 overflow-hidden transform-gpu origin-center scale-110">
+    <div ref={containerRef} className="relative z-10 -rotate-[2deg] my-2 md:my-10 overflow-hidden transform-gpu origin-center scale-110">
       {/* Blurred background track */}
       <div className="bg-white/30 backdrop-blur-xl py-6 overflow-hidden border-y border-white/50 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
         <div className="flex whitespace-nowrap overflow-hidden">

@@ -39,7 +39,7 @@ export function CoreValuesCards() {
 
     let mm = gsap.matchMedia();
 
-    mm.add("(min-width: 768px)", () => {
+    mm.add("(min-width: 1024px)", () => {
       // DESKTOP: Pinned Fan-Out Animation
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -79,7 +79,7 @@ export function CoreValuesCards() {
       tl.to({}, { duration: 0.5 }); // buffer
     });
 
-    mm.add("(max-width: 767px)", () => {
+    mm.add("(max-width: 1023px)", () => {
       // MOBILE: Simple scroll fade-in
       gsap.fromTo(".core-header", 
         { opacity: 0, y: 20 },
@@ -96,7 +96,7 @@ export function CoreValuesCards() {
   }, []);
 
   const handleMouseEnter = (i: number) => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
     
     // Bring hovered wrapper to front to prevent stacking context clipping
     gsap.utils.toArray(".value-card-wrapper").forEach((el: any, idx: number) => {
@@ -134,7 +134,7 @@ export function CoreValuesCards() {
   };
 
   const handleMouseLeave = () => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
     
     // Restore original wrapper z-indexes based on initial stack state
     gsap.utils.toArray(".value-card-wrapper").forEach((el: any, idx: number) => {
@@ -158,10 +158,10 @@ export function CoreValuesCards() {
 
   return (
     <section ref={containerRef} className="relative z-10 w-full bg-transparent">
-      <div ref={triggerRef} className="px-8 md:px-16 py-32 w-full max-w-7xl mx-auto flex flex-col">
+      <div ref={triggerRef} className="px-4 md:px-8 lg:px-16 py-20 md:py-32 w-full max-w-7xl mx-auto flex flex-col">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <div className="core-header">
             <div className="section-tag mb-6 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F43F5E]" /> Core Values
@@ -187,14 +187,14 @@ export function CoreValuesCards() {
         </div>
 
         {/* Cards */}
-        <div className="cards-grid grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        <div className="cards-grid grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
           {CARDS.map((card, i) => (
             <div
               key={i}
               className={`value-card-wrapper wrapper-${i} origin-bottom relative`}
             >
               <div 
-                className={`value-card-inner inner-${i} h-full glass rounded-[1.5rem] p-8 md:p-10 flex flex-col gap-6 group relative overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/50 shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer will-change-transform`}
+                className={`value-card-inner inner-${i} h-full glass rounded-[1.5rem] p-6 md:p-8 lg:p-10 flex flex-col gap-5 md:gap-6 group relative overflow-hidden bg-white/40 backdrop-blur-2xl border border-white/50 shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer will-change-transform`}
                 onMouseEnter={() => handleMouseEnter(i)}
                 onMouseLeave={handleMouseLeave}
               >

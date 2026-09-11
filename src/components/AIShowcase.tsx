@@ -187,7 +187,7 @@ export function AIShowcase() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-[#050810] py-28 md:py-40 px-4 md:px-8 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full bg-[#050810] py-20 md:py-28 lg:py-40 px-4 md:px-8 overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-15 pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 

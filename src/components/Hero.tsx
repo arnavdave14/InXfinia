@@ -52,7 +52,7 @@ export function Hero() {
   return (
     <section ref={sectionRef} className="relative min-h-screen flex flex-col z-10 mx-auto max-w-[84rem]">
       {/* ── Hero content ── */}
-      <div className="flex-1 flex flex-col justify-center px-6 md:px-12 pt-32 pb-32 relative">
+      <div className="flex-1 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-32 pb-32 relative">
         {/* Tag */}
         <div className="section-tag mb-10 w-fit self-start">
           <span className="w-1.5 h-1.5 rounded-full bg-[#F43F5E] animate-pulse" />
@@ -66,7 +66,7 @@ export function Hero() {
               <div
                 className="hero-line font-black leading-[0.85]"
                 style={{
-                  fontSize: "clamp(4rem, 11vw, 10rem)",
+                  fontSize: "clamp(3rem, 11vw, 10rem)",
                   letterSpacing: "-0.04em",
                   color: i === 1 ? "transparent" : "#090A0F",
                   WebkitTextStroke: i === 1 ? "2px rgba(9,10,15,0.15)" : "none",

@@ -241,13 +241,13 @@ export function EcosystemSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden"
+      className="relative min-h-[800px] lg:h-screen w-full overflow-hidden"
       style={{ background: "transparent" }}
     >
-      <div className="mx-auto relative z-10 flex h-full items-center px-6 lg:px-14 max-w-[88rem]">
+      <div className="mx-auto relative z-10 flex flex-col lg:flex-row h-full items-center justify-center px-4 md:px-6 lg:px-14 max-w-[88rem] py-16 lg:py-0">
 
         {/* ══════ LEFT — Stacked keywords ══════════════════════ */}
-        <div className="flex-1 min-w-0 flex flex-col justify-center pr-6 lg:pr-10">
+        <div className="w-full lg:flex-1 min-w-0 flex flex-col justify-center pr-0 lg:pr-10 mb-6 lg:mb-0 z-20 mt-10 lg:mt-0">
 
           {/* Eyebrow */}
           <div className="section-tag mb-10 w-fit">
@@ -283,7 +283,7 @@ export function EcosystemSection() {
                   className="whitespace-nowrap"
                   style={{
                     fontFamily: "var(--font-syne)",
-                    fontSize: "clamp(2.4rem, 5vw, 5.6rem)",
+                    fontSize: "clamp(1.8rem, 5vw, 5.6rem)",
                     fontWeight: 900,
                     letterSpacing: "-0.035em",
                     color: "rgba(9,10,15,0.07)",
@@ -300,7 +300,7 @@ export function EcosystemSection() {
                   aria-hidden
                   style={{
                     fontFamily: "var(--font-syne)",
-                    fontSize: "clamp(2.4rem, 5vw, 5.6rem)",
+                    fontSize: "clamp(1.8rem, 5vw, 5.6rem)",
                     fontWeight: 900,
                     letterSpacing: "-0.035em",
                     lineHeight: 1.02,
@@ -347,7 +347,7 @@ export function EcosystemSection() {
         <div className="hidden lg:block relative flex-shrink-0 h-full" style={{ width: "4rem" }}></div>
 
         {/* ══════ RIGHT — Stacked reveal cards ════════════════ */}
-        <div className="flex-1 min-w-0 relative h-full flex items-center justify-end">
+        <div className="w-full lg:flex-1 min-w-0 relative h-[450px] lg:h-auto flex items-center justify-center lg:justify-end flex-grow">
           {PANELS.map((panel, i) => (
             <div
               key={panel.id}
@@ -413,7 +413,7 @@ export function EcosystemSection() {
                     aria-hidden
                     className="pointer-events-none absolute right-4 top-0 select-none font-black leading-none"
                     style={{
-                      fontSize: "clamp(5rem,10vw,10rem)",
+                      fontSize: "clamp(4rem,10vw,10rem)",
                       backgroundImage: panel.gradient,
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
@@ -427,7 +427,7 @@ export function EcosystemSection() {
                   </div>
 
                   {/* ── Content ───────────────────────────────── */}
-                  <div className="relative z-10 px-9 py-9 md:px-11 md:py-11 flex flex-col gap-4 pl-12">
+                  <div className="relative z-10 px-5 py-6 md:px-9 md:py-9 lg:px-11 lg:py-11 flex flex-col gap-3 pl-8 md:pl-12">
 
                     {/* Tag */}
                     <div className="eco-ct-tag flex items-center gap-3">

@@ -64,7 +64,7 @@ function TestimonialCard({ t, index }: { t: any; index: number }) {
   const glowRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return; // Disable on mobile
+    if (window.innerWidth < 1024) return; // Disable on mobile/tablet
     if (!cardRef.current || !glareRef.current || !glowRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
@@ -109,7 +109,7 @@ function TestimonialCard({ t, index }: { t: any; index: number }) {
   };
 
   const handleMouseLeave = () => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
     
     gsap.to(cardRef.current, {
       rotateX: 0,
@@ -133,7 +133,7 @@ function TestimonialCard({ t, index }: { t: any; index: number }) {
     <div className="testi-card-wrapper" style={{ perspective: "1500px" }}>
       <div
         ref={cardRef}
-        className="glass rounded-[1.5rem] p-8 md:p-10 relative overflow-hidden flex flex-col gap-6 h-full bg-white/40 backdrop-blur-2xl border border-white/50 cursor-crosshair will-change-transform"
+        className="glass rounded-[1.5rem] p-6 md:p-8 lg:p-10 relative overflow-hidden flex flex-col gap-5 md:gap-6 h-full bg-white/40 backdrop-blur-2xl border border-white/50 cursor-crosshair will-change-transform"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -198,7 +198,7 @@ export function TeamSection() {
     if (!containerRef.current || !headerRef.current) return;
     let mm = gsap.matchMedia();
 
-    mm.add("(min-width: 768px)", () => {
+    mm.add("(min-width: 1024px)", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
@@ -249,7 +249,7 @@ export function TeamSection() {
       tl.to({}, { duration: 0.5 }); // buffer at end
     });
 
-    mm.add("(max-width: 767px)", () => {
+    mm.add("(max-width: 1023px)", () => {
       // MOBILE: Simple stagger fade-in to prevent layout clipping
       gsap.fromTo(headerRef.current, 
         { opacity: 0, y: 30 },
@@ -272,7 +272,7 @@ export function TeamSection() {
 
   return (
     <section ref={containerRef} className="relative z-10 w-full bg-transparent overflow-hidden">
-      <div className="px-8 md:px-16 py-20 w-full max-w-7xl mx-auto flex flex-col justify-center min-h-screen">
+      <div className="px-4 md:px-8 lg:px-16 py-16 md:py-20 w-full max-w-7xl mx-auto flex flex-col justify-center min-h-screen">
         
         {/* Header */}
         <div ref={headerRef} className="flex flex-col items-center justify-center text-center mb-16 relative z-20">
@@ -305,7 +305,7 @@ export function TeamSection() {
         {/* Bottom banner */}
         <div
           ref={ctaRef}
-          className="mt-12 glass rounded-[1.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative z-20 bg-white/60 backdrop-blur-3xl border border-white/80 shadow-2xl"
+          className="mt-12 glass rounded-[1.5rem] p-6 md:p-8 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 relative z-20 bg-white/60 backdrop-blur-3xl border border-white/80 shadow-2xl"
         >
           <div>
             <div className="text-3xl md:text-4xl font-black text-[#090A0F] tracking-tight mb-2">Join 300+ engineers.</div>

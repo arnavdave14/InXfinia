@@ -9,12 +9,12 @@ export function CTASection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="relative z-10 px-8 md:px-16 py-28 md:py-40">
+    <section ref={ref} className="relative z-10 px-4 md:px-8 lg:px-16 py-20 md:py-28 lg:py-40">
       <motion.div
         initial={{ opacity: 0, y: 50, scale: 0.97 }}
         animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-        className="glass-strong rounded-[2rem] p-14 md:p-20 relative overflow-hidden text-center"
+        className="glass-strong rounded-[2rem] p-6 sm:p-10 md:p-14 lg:p-20 relative overflow-hidden text-center"
       >
         {/* Inner glow orbs */}
         <div className="absolute top-0 left-1/4 w-[40%] h-[60%] bg-[#5B21B6] rounded-full blur-[100px] opacity-10 pointer-events-none" />
@@ -28,7 +28,7 @@ export function CTASection() {
 
           <h2
             className="font-black leading-[0.95] tracking-tight mb-8 text-[#090A0F]"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 10vw, 7rem)" }}
           >
             Ready to build with AI{" "}
             <span
