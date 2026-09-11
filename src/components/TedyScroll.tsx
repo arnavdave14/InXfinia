@@ -88,7 +88,7 @@ export function TedyScroll() {
         trigger: containerRef.current,
         start: "top top",
         end: "bottom bottom",
-        scrub: 1, // 1 second smoothing
+        scrub: 0.1, // Near-instant responsiveness
       },
     });
 
@@ -140,8 +140,8 @@ export function TedyScroll() {
   }, []);
 
   return (
-    // The giant scrollable parent container (300vh gives plenty of scroll room)
-    <div ref={containerRef} className="relative w-full h-[300vh] bg-transparent">
+    // The giant scrollable parent container
+    <div ref={containerRef} className="relative w-full h-[120vh] md:h-[300vh] bg-transparent">
       
       {/* The sticky frame that stays fixed to the viewport */}
       <div 
@@ -150,8 +150,8 @@ export function TedyScroll() {
       >
         
         {/* Central Text */}
-        <div className="portfolio-text z-30 flex flex-col items-center text-center pointer-events-none drop-shadow-2xl">
-          <h1 className="text-6xl md:text-9xl font-black text-black tracking-tighter" style={{ fontFamily: "var(--font-syne)" }}>
+        <div className="portfolio-text z-30 flex flex-col items-center text-center pointer-events-none drop-shadow-2xl px-4 w-full">
+          <h1 className="text-[clamp(2.5rem,11vw,8rem)] md:text-9xl font-black text-black tracking-tighter leading-[1]" style={{ fontFamily: "var(--font-syne)" }}>
             SELECTED<br />WORKS
           </h1>
           <p className="mt-4 text-black/60 font-mono text-sm tracking-widest uppercase">
@@ -166,7 +166,7 @@ export function TedyScroll() {
             ref={(el) => {
               cardsRef.current[i] = el;
             }}
-            className="absolute top-1/2 left-1/2 z-20 w-[280px] md:w-[400px] aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-black/5 bg-white"
+            className="absolute top-1/2 left-1/2 z-20 w-[160px] md:w-[400px] aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-black/5 bg-white"
           >
             <Image
               src={item.image}

@@ -274,16 +274,16 @@ export function EcosystemSection() {
             {PANELS.map((panel) => (
               <div
                 key={panel.id}
-                className="eco-kw-group relative w-max"
+                className="eco-kw-group relative w-max grid"
                 style={{ lineHeight: 1 }}
               >
                 {/* Ghost (dim, sets layout height) */}
                 <div
                   aria-hidden
-                  className="whitespace-nowrap"
+                  className="whitespace-nowrap col-start-1 row-start-1"
                   style={{
                     fontFamily: "var(--font-syne)",
-                    fontSize: "clamp(1.8rem, 5vw, 5.6rem)",
+                    fontSize: "clamp(1.4rem, 5vw, 5.6rem)",
                     fontWeight: 900,
                     letterSpacing: "-0.035em",
                     color: "rgba(9,10,15,0.07)",
@@ -296,11 +296,11 @@ export function EcosystemSection() {
 
                 {/* Animated gradient text overlay */}
                 <div
-                  className="eco-kw-overlay absolute inset-0 whitespace-nowrap"
+                  className="eco-kw-overlay whitespace-nowrap col-start-1 row-start-1"
                   aria-hidden
                   style={{
                     fontFamily: "var(--font-syne)",
-                    fontSize: "clamp(1.8rem, 5vw, 5.6rem)",
+                    fontSize: "clamp(1.4rem, 5vw, 5.6rem)",
                     fontWeight: 900,
                     letterSpacing: "-0.035em",
                     lineHeight: 1.02,

@@ -52,7 +52,7 @@ export function Hero() {
   return (
     <section ref={sectionRef} className="relative min-h-screen flex flex-col z-10 mx-auto max-w-[84rem]">
       {/* ── Hero content ── */}
-      <div className="flex-1 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-32 pb-32 relative">
+      <div className="flex-1 flex flex-col justify-center px-4 md:px-8 lg:px-12 pt-32 pb-12 md:pb-32 relative">
         {/* Tag */}
         <div className="section-tag mb-10 w-fit self-start">
           <span className="w-1.5 h-1.5 rounded-full bg-[#F43F5E] animate-pulse" />

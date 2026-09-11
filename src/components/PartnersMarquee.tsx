@@ -22,7 +22,7 @@ export function MarqueeBanner() {
     const marqueeTween = gsap.to(textRef.current, {
       xPercent: -50,
       ease: "none",
-      duration: 60, // Slower base speed
+      duration: 240, // Extremely slow base speed
       repeat: -1,
     });
 
@@ -43,7 +43,7 @@ export function MarqueeBanner() {
         
         // Temporarily speed up based on scroll velocity (less aggressive)
         gsap.to(marqueeTween, {
-          timeScale: direction * (1 + Math.abs(self.getVelocity() / 2000)),
+          timeScale: direction * (1 + Math.abs(self.getVelocity() / 5000)), // Greatly reduced scroll effect
           duration: 0.5,
           overwrite: true,
           onComplete: () => {
@@ -70,7 +70,7 @@ export function MarqueeBanner() {
           
           <div ref={textRef} className="flex whitespace-nowrap shrink-0 items-center">
             <span
-              className="text-3xl md:text-5xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
+              className="text-base md:text-5xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
               style={{
                 fontFamily: "var(--font-syne)",
                 backgroundImage: "linear-gradient(90deg, #111111, #5B21B6, #1D4ED8, #111111)",
@@ -80,7 +80,7 @@ export function MarqueeBanner() {
               {REPEATED}
             </span>
             <span
-              className="text-3xl md:text-5xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
+              className="text-base md:text-5xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
               style={{
                 fontFamily: "var(--font-syne)",
                 backgroundImage: "linear-gradient(90deg, #111111, #5B21B6, #1D4ED8, #111111)",

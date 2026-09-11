@@ -38,12 +38,12 @@ export function ScrollTextGradient({ text }: { text: string }) {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[120vh] flex items-center justify-center bg-transparent w-full"
+      className="relative min-h-[30vh] md:min-h-[120vh] py-16 md:py-0 flex items-center justify-center bg-transparent w-full"
     >
-      <div className="sticky top-1/2 -translate-y-1/2 w-full max-w-5xl mx-auto text-center">
+      <div className="w-full max-w-5xl mx-auto text-center md:sticky md:top-1/2 md:-translate-y-1/2">
         <h1 
           ref={textRef}
-          className="text-[clamp(2.5rem,6vw,6rem)] font-black leading-[1.1] tracking-tight text-transparent bg-clip-text"
+          className="text-[clamp(1.75rem,8vw,6rem)] font-black leading-[1.1] tracking-tight text-transparent bg-clip-text px-4"
           style={{
             // Updated for light theme: unrevealed text is a light gray (#cbd5e1)
             backgroundImage: "linear-gradient(to right, #ec4899, #a855f7, #3b82f6, #cbd5e1 50%, #cbd5e1 100%)",

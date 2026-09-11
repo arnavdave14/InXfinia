@@ -62,7 +62,7 @@ export default function PlatformPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA] text-[#090A0F] selection:bg-[#5B21B6] selection:text-white pb-32">
+    <main className="min-h-screen bg-[#FAFAFA] text-[#090A0F] selection:bg-[#5B21B6] selection:text-white pb-8 md:pb-32">
       {/* Animated mesh gradient background — matches home page */}
       <div className="mesh-bg" aria-hidden>
         <div className="orb orb-1" />
@@ -102,7 +102,7 @@ export default function PlatformPage() {
       </section>
 
       {/* Sticky Stacking Cards Section */}
-      <section className="relative w-full max-w-6xl mx-auto px-4 pt-32 pb-[50vh] z-20 flex flex-col gap-12">
+      <section className="relative w-full max-w-6xl mx-auto px-4 pt-16 md:pt-32 pb-32 md:pb-[50vh] z-20 flex flex-col gap-12">
         {cards.map((card, index) => {
           // Calculate the top offset based on index to create the stacking effect
           const topOffset = 140 + (index * 40); // Base top offset + staggering
@@ -151,7 +151,7 @@ export default function PlatformPage() {
       </section>
 
       {/* Detail Section - Built for extreme scale */}
-      <section className="py-32 px-8 md:px-16 max-w-7xl mx-auto relative z-10 mt-32">
+      <section className="pt-16 pb-8 md:py-32 px-4 md:px-16 max-w-7xl mx-auto relative z-10 mt-16 md:mt-32">
          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}

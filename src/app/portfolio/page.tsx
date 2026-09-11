@@ -29,7 +29,7 @@ export default function PortfolioPage() {
             <span className="text-xs font-semibold text-black/60 uppercase tracking-widest">InXfinia Studios</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text tracking-tighter mb-6" 
+          <h1 className="text-[clamp(1.5rem,8vw,5rem)] md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text tracking-tighter mb-6 leading-tight" 
               style={{ 
                 fontFamily: "var(--font-syne)",
                 backgroundImage: "linear-gradient(135deg, #111111 0%, #444444 100%)"
@@ -53,8 +53,9 @@ export default function PortfolioPage() {
 
         <ParallaxGallery />
 
-        <div className="h-[60vh] flex items-center justify-center bg-transparent relative z-50">
-          <div style={{ width: '100%', height: '100%' }}>
+        <div className="py-12 md:py-0 md:h-[60vh] flex flex-col items-center justify-center bg-transparent relative z-50 overflow-hidden">
+          {/* Desktop Particle Text */}
+          <div className="hidden md:block w-full h-full">
             <ParticleText
               text="Ready to build?"
               particleSize={3}
@@ -74,10 +75,16 @@ export default function PortfolioPage() {
               glow={false}
             />
           </div>
+          {/* Mobile Fallback Text */}
+          <div className="md:hidden w-full text-center px-4 py-8">
+            <h2 className="text-5xl font-black text-black tracking-tighter" style={{ fontFamily: "var(--font-syne)" }}>
+              Ready to build?
+            </h2>
+          </div>
         </div>
 
-        <div className="py-20 pb-32 relative z-20 flex flex-col items-center justify-center">
-          <p className="text-black/50 font-mono text-sm uppercase tracking-[0.3em] mb-8">
+        <div className="py-12 pb-16 md:py-20 md:pb-32 relative z-20 flex flex-col items-center justify-center">
+          <p className="text-black/50 font-mono text-sm uppercase tracking-[0.3em] mb-8 text-center px-4 leading-relaxed">
             Let's create something extraordinary
           </p>
           <a href="/contact" className="group relative inline-flex items-center justify-center px-12 py-5 font-bold text-white transition-all duration-300 ease-out bg-[#090A0F] rounded-full hover:scale-105 hover:shadow-[0_0_40px_rgba(91,33,182,0.4)] overflow-hidden">

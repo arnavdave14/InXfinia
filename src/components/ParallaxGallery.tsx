@@ -87,8 +87,8 @@ export function ParallaxGallery() {
   }, []);
 
   return (
-    // 400vh for massive scrolling room
-    <div ref={containerRef} className="relative w-full h-[400vh] bg-transparent">
+    // 120vh on mobile, 400vh on desktop for scrolling room
+    <div ref={containerRef} className="relative w-full h-[120vh] md:h-[400vh] bg-transparent">
       
       {/* Sticky viewport with high perspective for 3D space */}
       <div 
@@ -97,8 +97,8 @@ export function ParallaxGallery() {
       >
         
         {/* Central Text */}
-        <div className="parallax-title z-30 flex flex-col items-center text-center pointer-events-none">
-          <h2 className="text-5xl md:text-8xl font-black text-transparent bg-clip-text tracking-tighter"
+        <div className="parallax-title z-30 flex flex-col items-center text-center pointer-events-none w-full px-4">
+          <h2 className="text-[clamp(2rem,10vw,6rem)] md:text-8xl font-black text-transparent bg-clip-text tracking-tighter leading-none"
               style={{ 
                 fontFamily: "var(--font-syne)", 
                 backgroundImage: "linear-gradient(135deg, #111111 0%, #71717a 100%)",
@@ -118,7 +118,7 @@ export function ParallaxGallery() {
             ref={(el) => {
               cardsRef.current[i] = el;
             }}
-            className="absolute top-1/2 left-1/2 w-[260px] md:w-[360px] aspect-video rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-black/5 bg-white transform-gpu"
+            className="absolute top-1/2 left-1/2 w-[160px] md:w-[360px] aspect-video rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-black/5 bg-white transform-gpu"
             style={{
               // Fallback z-index sorting based on z depth to ensure closer items overlap further ones
               zIndex: Math.round(item.z + 1000)
