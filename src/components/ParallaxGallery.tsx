@@ -66,10 +66,11 @@ export function ParallaxGallery() {
       });
 
       // Calculate parallax speed based on Z depth
-      const baseDistance = -150; // vh
+      const isMobile = window.innerWidth < 768;
+      const baseDistance = isMobile ? -200 : -150; // vh
       const zFactor = 1 + (item.z / 1000); 
       
-      const travelDistance = baseDistance * Math.max(zFactor, 0.2); // keep a minimum movement
+      const travelDistance = baseDistance * Math.max(zFactor, isMobile ? 0.4 : 0.2); // keep a minimum movement
 
       tl.to(
         card,
@@ -87,8 +88,8 @@ export function ParallaxGallery() {
   }, []);
 
   return (
-    // 120vh on mobile, 400vh on desktop for scrolling room
-    <div ref={containerRef} className="relative w-full h-[120vh] md:h-[400vh] bg-transparent">
+    // 150vh on mobile, 400vh on desktop for scrolling room
+    <div ref={containerRef} className="relative w-full h-[150vh] md:h-[400vh] bg-transparent">
       
       {/* Sticky viewport with high perspective for 3D space */}
       <div 
@@ -130,6 +131,7 @@ export function ParallaxGallery() {
                 src={item.image}
                 alt="Gallery item"
                 fill
+                priority={i < 4}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"
               />

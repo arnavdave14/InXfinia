@@ -80,7 +80,9 @@ export function EcosystemSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
       /* ── Elements ───────────────────────────────────────────── */
       const kwGroups    = gsap.utils.toArray<HTMLElement>(".eco-kw-group");
       const kwOverlays  = kwGroups.map(g => g.querySelector<HTMLElement>(".eco-kw-overlay")!);
@@ -210,6 +212,27 @@ export function EcosystemSection() {
       });
     }, sectionRef);
 
+    mm.add("(max-width: 1023px)", () => {
+      const mobileCards = gsap.utils.toArray<HTMLElement>(".eco-mobile-card");
+      mobileCards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "back.out(1.2)",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    }, sectionRef);
+
     /* ── 3-D hover tilt ─────────────────────────────────────────── */
     const cardInners = sectionRef.current!.querySelectorAll<HTMLElement>(".eco-card-inner");
     type H = { move: (e: MouseEvent) => void; leave: () => void };
@@ -229,7 +252,7 @@ export function EcosystemSection() {
     });
 
     return () => {
-      ctx.revert();
+      mm.revert();
       cardInners.forEach(el => {
         const h = map.get(el);
         if (h) { el.removeEventListener("mousemove", h.move); el.removeEventListener("mouseleave", h.leave); }
@@ -241,13 +264,14 @@ export function EcosystemSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[800px] lg:h-screen w-full overflow-hidden"
+      className="relative w-full overflow-hidden"
       style={{ background: "transparent" }}
     >
-      <div className="mx-auto relative z-10 flex flex-col lg:flex-row h-full items-center justify-center px-4 md:px-6 lg:px-14 max-w-[88rem] py-16 lg:py-0">
+      {/* ══════ DESKTOP VERSION (Pinned GSAP) ══════════════════════ */}
+      <div className="hidden lg:flex mx-auto relative z-10 h-screen items-center justify-center px-14 max-w-[88rem]">
 
         {/* ══════ LEFT — Stacked keywords ══════════════════════ */}
-        <div className="w-full lg:flex-1 min-w-0 flex flex-col justify-center pr-0 lg:pr-10 mb-6 lg:mb-0 z-20 mt-10 lg:mt-0">
+        <div className="w-full lg:flex-1 min-w-0 flex flex-col justify-center pr-10 z-20">
 
           {/* Eyebrow */}
           <div className="section-tag mb-10 w-fit">
@@ -344,10 +368,10 @@ export function EcosystemSection() {
         </div>
 
         {/* ══════ CENTRE — Spacer (Spine Removed) ════════════════════════════════ */}
-        <div className="hidden lg:block relative flex-shrink-0 h-full" style={{ width: "4rem" }}></div>
+        <div className="relative flex-shrink-0 h-full" style={{ width: "4rem" }}></div>
 
         {/* ══════ RIGHT — Stacked reveal cards ════════════════ */}
-        <div className="w-full lg:flex-1 min-w-0 relative h-[450px] lg:h-auto flex items-center justify-center lg:justify-end flex-grow">
+        <div className="w-full lg:flex-1 min-w-0 relative h-auto flex items-center justify-end flex-grow">
           {PANELS.map((panel, i) => (
             <div
               key={panel.id}
@@ -533,7 +557,66 @@ export function EcosystemSection() {
             </div>
           ))}
         </div>
+      </div>
 
+      {/* ══════ MOBILE VERSION (Scroll Flow) ══════════════════════ */}
+      <div className="lg:hidden mx-auto relative z-10 flex flex-col px-4 py-16 max-w-md gap-12">
+        <div className="w-full flex flex-col text-left">
+          <div className="section-tag mb-8 w-fit">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5B21B6] animate-pulse" />
+            What We Bring
+          </div>
+          <h2 className="text-4xl font-black tracking-tighter text-black mb-4 leading-tight" style={{ fontFamily: "var(--font-syne)" }}>
+            Strategy, Expertise, Analysis & Consulting.
+          </h2>
+          <p className="text-[#9d97a8] text-sm leading-relaxed">
+            We provide the foundational elements to completely transform your infrastructure.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-6 w-full">
+          {PANELS.map((panel) => (
+             <div key={panel.id} className="eco-mobile-card relative overflow-hidden rounded-[24px]" style={{
+                    background: "rgba(255,255,255,0.9)",
+                    border: `1px solid rgba(${panel.accentRgb},0.15)`,
+                    boxShadow: `0 8px 32px -8px rgba(${panel.accentRgb},0.12)`,
+             }}>
+                {/* Thick gradient left border */}
+                <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundImage: panel.gradient }} />
+                
+                <div className="p-6 flex flex-col gap-4 pl-8">
+                  <div className="flex items-center gap-3">
+                    <span style={{ fontSize: "1.5rem", backgroundImage: panel.gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                      {panel.icon}
+                    </span>
+                    <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: panel.accent, background: `rgba(${panel.accentRgb},0.06)`, border: `1px solid rgba(${panel.accentRgb},0.2)`, borderRadius: "9999px", padding: "4px 10px" }}>
+                      {panel.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="font-black text-3xl tracking-tight" style={{ fontFamily: "var(--font-syne)", backgroundImage: panel.gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                    {panel.title}
+                  </h3>
+
+                  <p className="font-semibold text-black leading-snug">
+                    {panel.subtitle}
+                  </p>
+                  
+                  <p className="text-sm text-[#4a4453] leading-relaxed">
+                    {panel.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {panel.metrics.map(m => (
+                      <span key={m} style={{ fontFamily: "var(--font-inter)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: panel.accent, background: `rgba(${panel.accentRgb},0.05)`, border: `1px solid rgba(${panel.accentRgb},0.15)`, borderRadius: "9999px", padding: "4px 10px" }}>
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+             </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ export default function PortfolioPage() {
       <main className="relative z-10 min-h-screen bg-transparent">
         
         {/* Hero Section of Portfolio */}
-        <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-4 relative">
+        <div className="pt-32 pb-[50px] md:pt-0 md:pb-0 md:min-h-[80vh] flex flex-col items-center justify-center text-center px-4 relative">
           
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
@@ -43,7 +43,7 @@ export default function PortfolioPage() {
             A curated selection of our finest work, pushing the boundaries of design and engineering.
           </p>
 
-          <div className="absolute bottom-12 flex flex-col items-center gap-3 animate-bounce">
+          <div className="mt-8 md:mt-0 md:absolute md:bottom-12 flex flex-col items-center gap-3 animate-bounce">
             <span className="text-xs font-mono text-black/40 uppercase tracking-widest">Explore</span>
             <div className="w-px h-16 bg-gradient-to-b from-black/40 to-transparent" />
           </div>
@@ -53,7 +53,7 @@ export default function PortfolioPage() {
 
         <ParallaxGallery />
 
-        <div className="py-12 md:py-0 md:h-[60vh] flex flex-col items-center justify-center bg-transparent relative z-50 overflow-hidden">
+        <div className="pt-[50px] pb-4 md:py-0 md:h-[60vh] flex flex-col items-center justify-center bg-transparent relative z-50 overflow-hidden">
           {/* Desktop Particle Text */}
           <div className="hidden md:block w-full h-full">
             <ParticleText
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
             />
           </div>
           {/* Mobile Fallback Text */}
-          <div className="md:hidden w-full text-center px-4 py-8">
+          <div className="md:hidden w-full text-center px-4">
             <h2 className="text-5xl font-black text-black tracking-tighter" style={{ fontFamily: "var(--font-syne)" }}>
               Ready to build?
             </h2>
