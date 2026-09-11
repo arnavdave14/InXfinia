@@ -423,7 +423,7 @@ export default function DevelopersPage() {
             <div className="overflow-hidden">
               <span
                 className="dev-word block font-syne font-black leading-[0.85] tracking-[-0.04em] text-[#090A0F]"
-                style={{ fontSize: "clamp(5rem, 15vw, 13rem)" }}
+                style={{ fontSize: "clamp(2.8rem, 13vw, 13rem)" }}
               >
                 BUILT
               </span>
@@ -434,7 +434,7 @@ export default function DevelopersPage() {
               <div className="overflow-hidden">
                 <span
                   className="dev-word block font-syne font-black leading-[0.85] tracking-[-0.04em] text-[#090A0F]"
-                  style={{ fontSize: "clamp(5rem, 15vw, 13rem)" }}
+                  style={{ fontSize: "clamp(2.8rem, 13vw, 13rem)" }}
                 >
                   FOR
                 </span>
@@ -445,7 +445,7 @@ export default function DevelopersPage() {
                 <span
                   className="code-tag block font-syne font-black leading-none tracking-tight"
                   style={{
-                    fontSize: "clamp(3.5rem, 9vw, 9rem)",
+                    fontSize: "clamp(2.5rem, 9vw, 9rem)",
                     WebkitTextStroke: "3px #5B21B6",
                     color: "transparent",
                   }}
@@ -465,11 +465,11 @@ export default function DevelopersPage() {
             </div>
 
             {/* Row 3: DEVEL — outlined stroke (first half) */}
-            <div className="overflow-hidden -mt-2 md:-mt-4">
+            <div className="overflow-hidden mt-0 md:-mt-4">
               <span
                 className="dev-word block font-syne font-black leading-[0.85] tracking-[-0.04em]"
                 style={{
-                  fontSize: "clamp(5rem, 15vw, 13rem)",
+                  fontSize: "clamp(2.8rem, 13vw, 13rem)",
                   WebkitTextStroke: "3px #090A0F",
                   color: "transparent",
                 }}
@@ -479,10 +479,10 @@ export default function DevelopersPage() {
             </div>
 
             {/* Row 4: OPERS — gradient fill, intentionally overflows edge for drama */}
-            <div className="overflow-visible -mt-2 md:-mt-4">
+            <div className="overflow-visible mt-0 md:-mt-4">
               <span
                 className="dev-word block font-syne font-black leading-[0.85] tracking-[-0.04em] text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-blue-500 to-emerald-400 whitespace-nowrap"
-                style={{ fontSize: "clamp(5rem, 15vw, 13rem)" }}
+                style={{ fontSize: "clamp(2.8rem, 13vw, 13rem)" }}
               >
                 OPERS.
               </span>
@@ -542,7 +542,7 @@ export default function DevelopersPage() {
               {["PASSIONATE", "ABOUT", "DEVELOPER", "EXPERIENCE."].map((w, i) => (
                 <span
                   key={i}
-                  className={`passion-word inline-block font-syne font-black tracking-tighter leading-none text-[clamp(2.5rem,6.5vw,6.5rem)] ${
+                  className={`passion-word inline-block font-syne font-black tracking-tighter leading-none text-[clamp(1.75rem,8vw,6.5rem)] ${
                     i === 2
                       ? "text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500"
                       : i === 3
@@ -596,8 +596,8 @@ export default function DevelopersPage() {
               { target: 99, suffix: ".99%", label: "Uptime SLA" },
               { target: 5, suffix: "min", label: "Time to First API Call" },
             ].map((s) => (
-              <div key={s.label} className="rounded-2xl bg-white/60 backdrop-blur-sm border border-black/8 px-6 py-5">
-                <div className="font-syne font-black text-4xl text-[#090A0F]">
+              <div key={s.label} className="rounded-2xl bg-white/60 backdrop-blur-sm border border-black/8 px-4 sm:px-6 py-5">
+                <div className="font-syne font-black text-[clamp(1.5rem,5vw,2.25rem)] text-[#090A0F] break-words leading-none mb-1">
                   <span className="stat-num" data-target={s.target}>0</span>
                   <span>{s.suffix}</span>
                 </div>
@@ -640,7 +640,7 @@ export default function DevelopersPage() {
         ═══════════════════════════════════ */}
         <section className="features-section px-6 md:px-12 lg:px-20 max-w-[88rem] mx-auto py-16">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-emerald-500 mb-3 block">Infrastructure</span>
-          <h2 className="font-syne text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold text-[#090A0F] leading-tight tracking-tight mb-10">
+          <h2 className="font-syne text-[clamp(1.8rem,8vw,4.5rem)] font-extrabold text-[#090A0F] leading-[1.1] tracking-tight mb-10 hyphens-auto">
             Production-grade.<br />Out of the box.
           </h2>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
@@ -662,7 +662,7 @@ export default function DevelopersPage() {
         <section className="testi-section px-6 md:px-12 lg:px-20 max-w-[88rem] mx-auto py-16">
           {/* Giant section title */}
           <div className="mb-12 overflow-hidden">
-            <h2 className="font-syne font-black text-[clamp(2rem,6vw,5.5rem)] text-[#090A0F] tracking-tighter leading-none uppercase">
+            <h2 className="font-syne font-black text-[clamp(1.5rem,7vw,5.5rem)] text-[#090A0F] tracking-tighter leading-[1.1] uppercase">
               What developers<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500">say about us.</span>
             </h2>
@@ -690,7 +690,7 @@ export default function DevelopersPage() {
               <div>
                 {["HAVE AN", "IDEA?", "BUILD IT."].map((line, i) => (
                   <div key={i} className="overflow-hidden">
-                    <span className={`cta-word inline-block font-syne font-black leading-none tracking-tight text-[clamp(3rem,8vw,8rem)] ${
+                    <span className={`cta-word inline-block font-syne font-black leading-none tracking-tight text-[clamp(2.2rem,10vw,8rem)] ${
                       i === 1
                         ? "text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-blue-500"
                         : i === 2

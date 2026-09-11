@@ -34,7 +34,7 @@ export function Footer() {
   const [email, setEmail] = useState("");
 
   return (
-    <footer className="relative w-full bg-[#111111] pt-32 pb-0 overflow-hidden z-20 flex flex-col items-center justify-end">
+    <footer className="relative w-full bg-[#111111] pt-12 md:pt-16 pb-0 overflow-hidden z-20 flex flex-col items-center justify-end">
       
       {/* Background Dot Grid */}
       <div 
@@ -48,11 +48,11 @@ export function Footer() {
       {/* Massive Logo + Text Fully Above the Card */}
       <div className="relative w-full flex justify-center items-center gap-3 sm:gap-6 z-0 px-4 mb-2 group cursor-default">
         {/* Logo Symbol Silhouette */}
-        <div className="w-[8vw] max-w-[100px] aspect-square bg-[#222222] group-hover:bg-[#fafafa] transition-colors duration-500 rounded-3xl sm:rounded-[2rem] flex items-center justify-center shadow-inner">
-           <div className="w-1/2 h-1/2 rounded-full border-[5px] sm:border-[10px] border-[#111111] group-hover:border-[#111111] transition-colors duration-500" />
+        <div className="w-[12vw] sm:w-[10vw] lg:w-[8vw] max-w-[120px] aspect-square bg-[#222222] group-hover:bg-[#fafafa] transition-colors duration-500 rounded-2xl sm:rounded-[2rem] flex items-center justify-center shadow-inner">
+           <div className="w-1/2 h-1/2 rounded-full border-[4px] sm:border-[8px] lg:border-[10px] border-[#111111] group-hover:border-[#111111] transition-colors duration-500" />
         </div>
         {/* Company Name */}
-        <h1 className="text-[8vw] sm:text-[10vw] font-black tracking-tighter text-[#222222] group-hover:text-[#fafafa] transition-colors duration-500 leading-none" style={{ fontFamily: "var(--font-syne)" }}>
+        <h1 className="text-[14vw] sm:text-[12vw] lg:text-[10vw] font-black tracking-tighter text-[#222222] group-hover:text-[#fafafa] transition-colors duration-500 leading-none" style={{ fontFamily: "var(--font-syne)" }}>
           InXfinia
         </h1>
       </div>

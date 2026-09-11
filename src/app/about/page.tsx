@@ -37,17 +37,17 @@ export default function AboutPage() {
         { 
           opacity: 0, 
           filter: "blur(20px)",
-          y: 100 
+          y: 80 
         },
         {
           opacity: 1, 
           filter: "blur(0px)",
-          y: -200 * speed,
+          y: 0,
           ease: "power2.out",
           scrollTrigger: {
             trigger: block,
-            start: "top 90%",
-            end: "top 30%",
+            start: "top 80%",
+            end: "top 50%",
             scrub: 1, // Smooth scrubbing
           }
         }
@@ -82,14 +82,14 @@ export default function AboutPage() {
         <div className="orb orb-5" />
       </div>
 
-      <main ref={containerRef} className="relative z-10 pt-40 pb-0 overflow-hidden px-6 md:px-12">
+      <main ref={containerRef} className="relative z-10 pt-0 pb-0 overflow-hidden px-6 md:px-12">
         {/* Giant Hero Title */}
-        <div className="max-w-[84rem] mx-auto mb-40 text-center relative z-20">
+        <div className="min-h-[100svh] flex flex-col items-center justify-center max-w-[84rem] mx-auto text-center relative z-20">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-syne text-[clamp(4rem,10vw,9rem)] font-black leading-[0.85] tracking-tighter text-[#090A0F] mix-blend-overlay"
+            className="font-syne text-[clamp(2.5rem,10vw,9rem)] font-black leading-[0.85] tracking-tighter text-[#090A0F] mix-blend-overlay"
           >
             ORIGIN<br />STORY
           </motion.h1>
@@ -103,25 +103,24 @@ export default function AboutPage() {
           </motion.p>
         </div>
 
-        {/* The Winding Timeline SVG */}
-        <div className="svg-container absolute top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-[40rem] h-[200vh] pointer-events-none z-0 opacity-60">
-          <svg viewBox="0 0 100 1000" preserveAspectRatio="none" className="w-full h-full stroke-violet-500 overflow-visible">
-            <path
-              ref={pathRef}
-              d="M50,0 C80,100 20,200 50,300 C80,400 20,500 50,600 C80,700 20,800 50,900 C80,1000 50,1000 50,1000"
-              fill="none"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
         {/* Floating Bubble Content */}
-        <div className="relative max-w-[84rem] mx-auto h-[200vh]">
+        <div className="relative max-w-[84rem] mx-auto h-[350vh] md:h-[200vh]">
+          {/* The Winding Timeline SVG */}
+          <div className="svg-container absolute -top-[40vh] bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[40rem] pointer-events-none z-0 opacity-60">
+            <svg viewBox="0 0 100 1000" preserveAspectRatio="none" className="w-full h-full stroke-violet-500 overflow-visible">
+              <path
+                ref={pathRef}
+                d="M50,0 C80,100 20,200 50,300 C80,400 20,500 50,600 C80,700 20,800 50,900 C80,1000 50,1000 50,1000"
+                fill="none"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
           {/* Text Block 1 */}
           <div data-speed="1.2" className="about-text absolute top-[5%] md:left-[10%] w-[90%] md:w-full max-w-[28rem] p-4 left-1/2 -translate-x-1/2 md:translate-x-0">
-            <span className="text-5xl mb-4 block">🌌</span>
-            <h3 className="font-syne text-4xl font-black mb-3 text-[#090A0F]">The Big Bang</h3>
+            <span className="text-4xl md:text-5xl mb-4 block">🌌</span>
+            <h3 className="font-syne text-3xl md:text-4xl font-black mb-3 text-[#090A0F]">The Big Bang</h3>
             <p className="text-lg text-[#333333] leading-relaxed font-medium">
               We realized AI infrastructure was a fragmented mess. We set out to build a unified fabric. No boxes. No limits. Just pure compute elegance.
             </p>
@@ -129,8 +128,8 @@ export default function AboutPage() {
 
           {/* Text Block 2 */}
           <div data-speed="0.8" className="about-text absolute top-[30%] md:right-[5%] w-[90%] md:w-full max-w-[32rem] p-4 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto">
-            <span className="text-5xl mb-4 block">🧬</span>
-            <h3 className="font-syne text-5xl font-black mb-3 text-[#090A0F]">The DNA</h3>
+            <span className="text-4xl md:text-5xl mb-4 block">🧬</span>
+            <h3 className="font-syne text-4xl md:text-5xl font-black mb-3 text-[#090A0F]">The DNA</h3>
             <p className="text-lg text-[#333333] leading-relaxed font-medium">
               Our core team came together from deep learning labs and distributed systems engineering. We speak latency, throughput, and tensor shapes natively.
             </p>
@@ -138,7 +137,7 @@ export default function AboutPage() {
 
           {/* Text Block 3 */}
           <div data-speed="1.5" className="about-text absolute top-[55%] md:left-[15%] w-[90%] md:w-full max-w-[32rem] p-4 left-1/2 -translate-x-1/2 md:translate-x-0">
-            <h3 className="font-syne text-6xl font-black mb-3 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-emerald-500">
+            <h3 className="font-syne text-5xl md:text-6xl font-black mb-3 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-emerald-500">
               Future
             </h3>
             <p className="text-xl text-[#333333] leading-relaxed font-medium">
@@ -148,7 +147,7 @@ export default function AboutPage() {
 
           {/* Text Block 4 */}
           <div data-speed="1.1" className="about-text absolute top-[80%] md:right-[15%] w-[90%] md:w-full max-w-[30rem] p-4 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto">
-            <h3 className="font-syne text-5xl font-black mb-4 text-[#090A0F]">
+            <h3 className="font-syne text-4xl md:text-5xl font-black mb-4 text-[#090A0F]">
               Join the Flow
             </h3>
             <p className="text-lg text-[#333333] leading-relaxed mb-8 font-medium">
@@ -166,9 +165,9 @@ export default function AboutPage() {
             {[...Array(6)].map((_, i) => (
               <div 
                 key={i} 
-                className="absolute font-syne text-[clamp(6rem,18vw,20rem)] font-black uppercase tracking-tighter text-transparent select-none whitespace-nowrap"
+                className="absolute font-syne text-[clamp(2.5rem,12vw,20rem)] font-black uppercase tracking-tighter text-transparent select-none whitespace-nowrap"
                 style={{ 
-                  WebkitTextStroke: `2px rgba(91,33,182,${1 - i * 0.15})`,
+                  WebkitTextStroke: `1px rgba(91,33,182,${1 - i * 0.15})`,
                   transform: `translateZ(${-i * 400}px)` 
                 }}
               >

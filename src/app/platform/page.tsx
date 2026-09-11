@@ -113,32 +113,32 @@ export default function PlatformPage() {
               className="sticky transition-all duration-500 ease-out"
               style={{ top: `${topOffset}px` }}
             >
-              <div className={`w-full bg-white/80 backdrop-blur-2xl border border-white/40 shadow-2xl rounded-[3rem] p-8 md:p-12 overflow-hidden flex flex-col md:flex-row items-center gap-12 relative group`}
+              <div className={`w-full bg-white/80 backdrop-blur-2xl border border-white/40 shadow-2xl rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 overflow-hidden flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12 relative group`}
                    style={{ boxShadow: `0 30px 60px -15px ${card.color}20` }}>
                 
                 {/* Subtle gradient background for each card */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${card.bg} opacity-50 pointer-events-none`} />
                 
                 {/* Icon Container */}
-                <div className="shrink-0 w-32 h-32 md:w-48 md:h-48 rounded-[2.5rem] flex items-center justify-center transition-transform duration-700 group-hover:scale-105"
+                <div className="shrink-0 w-24 h-24 md:w-48 md:h-48 rounded-[1.5rem] md:rounded-[2.5rem] flex items-center justify-center transition-transform duration-700 group-hover:scale-105"
                      style={{ backgroundColor: `${card.color}15`, color: card.color, border: `1px solid ${card.color}30` }}>
                   {card.icon}
                 </div>
                 
                 {/* Content */}
-                <div className="flex-1 flex flex-col justify-center relative z-10">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/50 bg-white/60 text-xs font-bold uppercase tracking-widest mb-6 w-fit shadow-sm"
+                <div className="flex-1 flex flex-col justify-center relative z-10 w-full">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/50 bg-white/60 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 w-fit shadow-sm"
                        style={{ color: card.color }}>
                     <Sparkles size={14} /> Node {index + 1}
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-[#090A0F]">{card.title}</h2>
-                  <p className="text-xl text-[#090A0F]/60 font-medium mb-8 leading-relaxed max-w-2xl">{card.desc}</p>
+                  <h2 className="text-[clamp(2.2rem,8vw,3.75rem)] font-black tracking-tighter mb-3 md:mb-4 text-[#090A0F] leading-[1.1]">{card.title}</h2>
+                  <p className="text-base md:text-xl text-[#090A0F]/60 font-medium mb-6 md:mb-8 leading-relaxed max-w-2xl">{card.desc}</p>
                   
                   {/* Features */}
-                  <ul className="flex flex-col gap-3">
+                  <ul className="flex flex-col gap-2 md:gap-3">
                     {card.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-3 text-[#090A0F]/80 font-medium text-lg">
-                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: card.color }} />
+                      <li key={i} className="flex items-center gap-3 text-[#090A0F]/80 font-medium text-sm md:text-lg">
+                        <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full shrink-0" style={{ backgroundColor: card.color }} />
                         {feature}
                       </li>
                     ))}

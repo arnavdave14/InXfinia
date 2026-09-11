@@ -103,15 +103,15 @@ export default function BlogPage() {
         <div className="orb orb-5" />
       </div>
 
-      <div ref={containerRef} className="relative z-10 min-h-screen text-[#090A0F] overflow-hidden pt-32 pb-40">
+      <div ref={containerRef} className="relative z-10 min-h-screen text-[#090A0F] overflow-hidden pt-24 pb-20">
       
       {/* Hero Section */}
-      <section className="px-6 md:px-12 max-w-[1600px] mx-auto relative mb-24">
+      <section className="px-6 md:px-12 max-w-[1600px] mx-auto relative mb-12">
         
         {/* Massive Typography Block */}
         <div className="flex flex-col items-center md:items-end w-full relative z-10">
           
-          <div className="flex items-center gap-4 overflow-hidden w-full md:w-auto justify-end">
+          <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto justify-center md:justify-end">
             <span className="hero-line font-syne text-[clamp(3rem,10vw,12rem)] font-light leading-[0.8] tracking-tighter text-transparent" style={{ WebkitTextStroke: "2px #5B21B6" }}>
               *IDEAS
             </span>
@@ -120,7 +120,7 @@ export default function BlogPage() {
             </span>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 overflow-hidden w-full md:w-auto justify-end mt-4">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto justify-center md:justify-end mt-4">
             {/* Small info text left */}
             <p className="hero-line hidden md:block max-w-[200px] text-xs font-medium leading-relaxed font-sans mt-auto mb-4 mr-12 text-left">
               InXfinia® is a strategic AI agency that works with innovative, high-growth companies looking to launch, grow, or refresh their architecture.
@@ -130,7 +130,7 @@ export default function BlogPage() {
             </span>
           </div>
 
-          <div className="flex items-center justify-end overflow-hidden w-full md:w-auto mt-4">
+          <div className="flex items-center justify-center md:justify-end w-full md:w-auto mt-4">
             <span className="hero-line font-syne text-[clamp(3.5rem,13vw,15rem)] font-medium leading-[0.8] tracking-tighter text-transparent" style={{ WebkitTextStroke: "2px #10b981" }}>
               AROUND™
             </span>
@@ -139,7 +139,7 @@ export default function BlogPage() {
         </div>
 
         {/* Small Navigation/Scroll indicators */}
-        <div className="flex justify-between items-end mt-24 border-b border-[#111] pb-2">
+        <div className="flex justify-between items-end mt-12 border-b border-[#111] pb-2">
           <Link href="#help" className="text-sm font-bold tracking-tight hover:opacity-60 transition-opacity">
             Here's how we can help
           </Link>
@@ -150,7 +150,7 @@ export default function BlogPage() {
       </section>
 
       {/* Main Full-Width Image */}
-      <section className="main-img-section px-6 md:px-12 max-w-[1600px] mx-auto mb-32">
+      <section className="main-img-section px-6 md:px-12 max-w-[1600px] mx-auto mb-16">
         <div className="main-img-container relative w-full aspect-[21/9] overflow-hidden">
           <Image 
             src="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?q=80&w=2000&auto=format&fit=crop"
@@ -165,7 +165,7 @@ export default function BlogPage() {
       </section>
 
       {/* Secondary Hero / Side Layout */}
-      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-48 flex flex-col lg:flex-row justify-between items-start gap-16">
+      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-16 md:mb-32 flex flex-col lg:flex-row justify-between items-start gap-12 md:gap-16">
         
         {/* Massive Text with Inline Image */}
         <div className="lg:w-1/2">
@@ -192,7 +192,7 @@ export default function BlogPage() {
             InXfinia is a strategic agency that works with innovative, high-growth companies looking to launch, grow, or refresh their architecture. Our unique method forges meaning in the belly of your business, so strategy, culture, and technical work together as one. You hire us to codify the mission, launch a product, pin a new strategy, articulate your position.
           </p>
 
-          <div className="mt-12 flex flex-col gap-6 items-start">
+          <div className="mt-8 flex flex-col gap-4 md:gap-6 items-start">
             <span className="text-[10px] font-bold tracking-widest uppercase">
               (CHOOSE YOUR PURPOSE)
             </span>
@@ -213,7 +213,7 @@ export default function BlogPage() {
       {/* Work Grid */}
       <section className="px-6 md:px-12 max-w-[1600px] mx-auto">
         <div className="flex justify-between items-end mb-12 border-b border-[#111] pb-6">
-          <h2 className="font-syne text-[clamp(2.5rem,6vw,6rem)] font-bold leading-[0.8] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-emerald-500">
+          <h2 className="font-syne text-[clamp(1.8rem,8vw,6rem)] font-bold leading-[0.85] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-emerald-500 break-words hyphens-auto w-full">
             WORK WE'RE<br />PROUD OF.
           </h2>
           <Link href="#" className="text-xs font-bold border-b-2 border-[#111] pb-1 hover:text-violet-600 hover:border-violet-600 transition-colors hidden md:block">

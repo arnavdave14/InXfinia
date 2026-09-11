@@ -449,13 +449,13 @@ function FunkyServiceSection({
               </div>
               <div>
                 <h3
-                  className="font-syne text-2xl md:text-3xl font-extrabold leading-tight"
+                  className="font-syne text-xl sm:text-2xl md:text-3xl font-extrabold leading-[1.1] break-words hyphens-auto"
                   style={{ color: "#090A0F" }}
                 >
                   {s.title}
                 </h3>
                 <p
-                  className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] mt-0.5"
+                  className="font-mono text-[10px] md:text-[11px] font-bold uppercase tracking-widest md:tracking-[0.2em] mt-1 break-words"
                   style={{ color: s.color }}
                 >
                   {s.tagline}
@@ -615,30 +615,30 @@ export default function DigitalMarketingPage() {
               {/* Line 1 */}
               <div className="overflow-hidden flex flex-wrap gap-x-4 md:gap-x-6 mb-1">
                 {["We", "GROW"].map((w, i) => (
-                  <span key={i} className={`dm-hero-word inline-block text-[clamp(4rem,11vw,9rem)] font-black ${w === "GROW" ? "text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-purple-400" : "text-[#090A0F]"}`}>
+                  <span key={i} className={`dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black ${w === "GROW" ? "text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-purple-400" : "text-[#090A0F]"}`}>
                     {w}
                   </span>
                 ))}
-                <span className="dm-hero-word inline-block text-[clamp(4rem,11vw,9rem)] font-black text-[#090A0F]">brands,</span>
+                <span className="dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black text-[#090A0F]">brands,</span>
                 {/* floating badge 1 */}
-                <span className="dm-badge hidden md:inline-flex self-center items-center justify-center w-20 h-20 rounded-full bg-amber-400 text-black font-black text-xl shadow-lg">😎</span>
+                <span className="dm-badge inline-flex self-center items-center justify-center w-12 h-12 md:w-20 md:h-20 rounded-full bg-amber-400 text-black font-black text-sm md:text-xl shadow-lg shrink-0">😎</span>
               </div>
 
               {/* Line 2 */}
               <div className="overflow-hidden flex flex-wrap gap-x-4 md:gap-x-6 mb-1 items-center">
-                <span className="dm-hero-word inline-block text-[clamp(3.5rem,10vw,8.5rem)] font-black text-[#090A0F]">CREATE</span>
-                <span className="dm-hero-word inline-block text-[clamp(3.5rem,10vw,8.5rem)] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">results</span>
+                <span className="dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black text-[#090A0F]">CREATE</span>
+                <span className="dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">results</span>
                 {/* badge ampersand */}
-                <span className="dm-badge hidden md:inline-flex self-center items-center justify-center w-16 h-16 rounded-full border-2 border-dashed border-emerald-500 text-emerald-500 font-black text-2xl">
+                <span className="dm-badge inline-flex self-center items-center justify-center w-10 h-10 md:w-16 md:h-16 rounded-full border-2 border-dashed border-emerald-500 text-emerald-500 font-black text-lg md:text-2xl shrink-0">
                   &amp;
                 </span>
               </div>
 
               {/* Line 3 */}
               <div className="overflow-hidden flex flex-wrap gap-x-4 md:gap-x-6">
-                <span className="dm-hero-word inline-block text-[clamp(4rem,11vw,9rem)] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">SCALE</span>
-                <span className="dm-hero-word inline-block text-[clamp(4rem,11vw,9rem)] font-black text-[#090A0F]">your</span>
-                <span className="dm-hero-word inline-block text-[clamp(4rem,11vw,9rem)] font-black text-[#090A0F]">business.</span>
+                <span className="dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-400">SCALE</span>
+                <span className="dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black text-[#090A0F]">your</span>
+                <span className="dm-hero-word inline-block text-[clamp(2.4rem,11vw,9rem)] font-black text-[#090A0F]">business.</span>
               </div>
             </h1>
           </div>
@@ -653,14 +653,14 @@ export default function DigitalMarketingPage() {
               {/* CTA badge sticker */}
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#090A0F] text-white font-mono text-sm font-bold uppercase tracking-widest hover:scale-105 hover:shadow-[0_0_30px_rgba(91,33,182,0.35)] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-5 py-2.5 md:px-7 md:py-3.5 rounded-full bg-[#090A0F] text-white font-mono text-xs md:text-sm font-bold uppercase tracking-widest hover:scale-105 hover:shadow-[0_0_30px_rgba(91,33,182,0.35)] transition-all duration-300"
               >
                 Let's Talk <ArrowUpRight size={14} />
               </Link>
 
-              <div className="inline-flex flex-col items-center justify-center w-24 h-24 rounded-full border-4 border-amber-400 bg-amber-50 dm-badge shadow-md rotate-12">
-                <span className="font-black text-xl text-amber-600 leading-none">100%</span>
-                <span className="font-mono text-[8px] text-amber-700 uppercase tracking-tight text-center leading-tight">ROI Focused</span>
+              <div className="inline-flex flex-col items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full border-[3px] md:border-4 border-amber-400 bg-amber-50 dm-badge shadow-md rotate-12 shrink-0">
+                <span className="font-black text-sm md:text-xl text-amber-600 leading-none">100%</span>
+                <span className="font-mono text-[6px] md:text-[8px] text-amber-700 uppercase tracking-tight text-center leading-tight">ROI Focused</span>
               </div>
             </div>
           </div>
@@ -717,7 +717,7 @@ export default function DigitalMarketingPage() {
             transition={{ duration: 0.7 }}
             className="mb-14"
           >
-            <h2 className="font-syne text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold text-[#090A0F] leading-tight tracking-tight">
+            <h2 className="font-syne text-[clamp(2rem,6vw,4.5rem)] font-extrabold text-[#090A0F] leading-tight tracking-tight">
               Marketing that<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-blue-500 to-emerald-500">actually converts.</span>
             </h2>
@@ -817,7 +817,7 @@ export default function DigitalMarketingPage() {
             }} />
             <div className="relative z-10">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-violet-500 mb-4 block">Ready to scale?</span>
-              <h2 className="font-syne text-[clamp(2.5rem,5vw,5rem)] font-extrabold text-[#090A0F] mb-4 tracking-tight leading-tight">
+              <h2 className="font-syne text-[clamp(2rem,6vw,5rem)] font-extrabold text-[#090A0F] mb-4 tracking-tight leading-[1.1]">
                 Let's grow your<br />brand together.
               </h2>
               <p className="text-[#4a4453] max-w-lg mx-auto mb-10 leading-relaxed">
@@ -825,13 +825,13 @@ export default function DigitalMarketingPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-white font-mono text-sm tracking-widest uppercase transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center text-center gap-3 px-6 py-3.5 md:px-10 md:py-4 rounded-[2rem] font-bold text-white font-mono text-xs md:text-sm tracking-wider md:tracking-widest uppercase transition-all duration-300 hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg, #5B21B6, #1e5fff)",
                   boxShadow: "0 0 40px rgba(91,33,182,0.25)",
                 }}
               >
-                Book Free Strategy Call <ArrowUpRight size={16} />
+                <span>Book Free<br className="sm:hidden" /> Strategy Call</span> <ArrowUpRight className="w-5 h-5 md:w-4 md:h-4 shrink-0" />
               </Link>
             </div>
           </motion.div>

@@ -34,21 +34,11 @@ export function StatsSection() {
       }
     );
 
-    // Subtle parallax float for the whole section
-    gsap.to(ref.current, {
-      yPercent: -15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ref.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      }
-    });
+    // Removed Subtle parallax float for the whole section as it creates massive blank gaps below it on mobile
   }, []);
 
   return (
-    <section ref={ref} className="relative z-10 px-4 md:px-8 lg:px-16 py-20 md:py-28 lg:py-40 perspective-[1000px]">
+    <section ref={ref} className="relative z-10 px-4 md:px-8 lg:px-16 py-12 md:py-20 lg:py-32 perspective-[1000px]">
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

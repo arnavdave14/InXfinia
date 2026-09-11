@@ -264,8 +264,8 @@ export function EcosystemSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden"
-      style={{ background: "transparent" }}
+      className="relative w-full bg-[#f8f9fa] overflow-hidden py-4 md:py-20 z-10"
+      style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}
     >
       {/* ══════ DESKTOP VERSION (Pinned GSAP) ══════════════════════ */}
       <div className="hidden lg:flex mx-auto relative z-10 h-screen items-center justify-center px-14 max-w-[88rem]">
@@ -560,7 +560,7 @@ export function EcosystemSection() {
       </div>
 
       {/* ══════ MOBILE VERSION (Scroll Flow) ══════════════════════ */}
-      <div className="lg:hidden mx-auto relative z-10 flex flex-col px-4 py-16 max-w-md gap-12">
+      <div className="lg:hidden mx-auto relative z-10 flex flex-col px-4 py-8 max-w-md gap-12">
         <div className="w-full flex flex-col text-left">
           <div className="section-tag mb-8 w-fit">
             <span className="w-1.5 h-1.5 rounded-full bg-[#5B21B6] animate-pulse" />

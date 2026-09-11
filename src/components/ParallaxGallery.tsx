@@ -33,68 +33,72 @@ export function ParallaxGallery() {
   useEffect(() => {
     if (!containerRef.current || !stickyRef.current) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.2, // Lowered to 0.2 for buttery smooth, highly responsive scrolling
-      },
-    });
+    let mm = gsap.matchMedia();
 
-    // Central text parallax (moves slightly up and fades)
-    tl.to(".parallax-title", {
-      y: "-20vh",
-      opacity: 0,
-      ease: "power1.inOut",
-    }, 0);
+    mm.add({
+      isMobile: "(max-width: 767px)",
+      isDesktop: "(min-width: 768px)",
+    }, (context) => {
+      let { isMobile } = context.conditions as { isMobile: boolean };
 
-    // Image Cards Parallax
-    cardsRef.current.forEach((card, index) => {
-      if (!card) return;
-      const item = parallaxItems[index];
-
-      // Set initial 3D position
-      gsap.set(card, {
-        x: item.x,
-        y: item.y,
-        z: item.z,
-        scale: item.scale,
-        rotation: item.rotation,
-        xPercent: -50,
-        yPercent: -50,
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: isMobile ? "top bottom" : "top top",
+          end: isMobile ? "bottom top" : "bottom bottom",
+          scrub: 0.2,
+        },
       });
 
-      // Calculate parallax speed based on Z depth
-      const isMobile = window.innerWidth < 768;
-      const baseDistance = isMobile ? -200 : -150; // vh
-      const zFactor = 1 + (item.z / 1000); 
-      
-      const travelDistance = baseDistance * Math.max(zFactor, isMobile ? 0.4 : 0.2); // keep a minimum movement
+      // Central text parallax (moves slightly up and fades)
+      tl.to(".parallax-title", {
+        y: isMobile ? "-10vh" : "-20vh",
+        opacity: isMobile ? 0.6 : 0,
+        ease: "power1.inOut",
+      }, 0);
 
-      tl.to(
-        card,
-        {
-          y: `+=${travelDistance}vh`,
-          ease: "none",
-        },
-        0 // All start at 0
-      );
+      // Image Cards Parallax
+      cardsRef.current.forEach((card, index) => {
+        if (!card) return;
+        const item = parallaxItems[index];
+
+        // Set initial 3D position
+        gsap.set(card, {
+          x: item.x,
+          y: item.y,
+          z: item.z,
+          scale: item.scale,
+          rotation: item.rotation,
+          xPercent: -50,
+          yPercent: -50,
+        });
+
+        // Calculate parallax speed based on Z depth
+        const baseDistance = isMobile ? -50 : -150; // vh
+        const zFactor = 1 + (item.z / 1000); 
+        const travelDistance = baseDistance * Math.max(zFactor, 0.2); 
+
+        tl.to(card, { y: `+=${travelDistance}vh`, ease: "none" }, 0);
+      });
+
+      return () => {
+        tl.kill();
+      };
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      mm.revert();
     };
   }, []);
 
   return (
-    // 150vh on mobile, 400vh on desktop for scrolling room
-    <div ref={containerRef} className="relative w-full h-[150vh] md:h-[400vh] bg-transparent">
+    // 70vh on mobile (non-sticky), 400vh on desktop (sticky)
+    <div ref={containerRef} className="relative w-full h-[70vh] md:h-[400vh] bg-transparent overflow-hidden md:overflow-visible">
       
       {/* Sticky viewport with high perspective for 3D space */}
       <div 
         ref={stickyRef} 
-        className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden perspective-[1000px]"
+        className="md:sticky md:top-0 h-full md:h-screen w-full flex items-center justify-center perspective-[1000px]"
       >
         
         {/* Central Text */}
@@ -119,7 +123,7 @@ export function ParallaxGallery() {
             ref={(el) => {
               cardsRef.current[i] = el;
             }}
-            className="absolute top-1/2 left-1/2 w-[160px] md:w-[360px] aspect-video rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-black/5 bg-white transform-gpu"
+            className={`absolute top-1/2 left-1/2 w-[160px] md:w-[360px] aspect-video rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-black/5 bg-white transform-gpu ${item.z < -500 ? 'hidden md:block' : ''}`}
             style={{
               // Fallback z-index sorting based on z depth to ensure closer items overlap further ones
               zIndex: Math.round(item.z + 1000)

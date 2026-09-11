@@ -135,7 +135,7 @@ function ServiceRow({
             {service.id}
           </span>
           <h2
-            className="font-syne font-extrabold tracking-tight leading-none transition-colors duration-300 text-[clamp(2rem,5.5vw,5.5rem)] group-hover:text-transparent group-hover:bg-clip-text"
+            className="font-syne font-extrabold tracking-tight leading-[1.1] transition-colors duration-300 text-[clamp(1.3rem,6vw,5.5rem)] break-words hyphens-auto group-hover:text-transparent group-hover:bg-clip-text"
             style={
               {
                 "--color": service.color,
