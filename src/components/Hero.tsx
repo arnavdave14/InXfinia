@@ -94,9 +94,6 @@ export function Hero() {
             <Link href="/platform" className="btn-primary px-8 py-4 text-base w-full sm:w-auto justify-center text-center">
               View Platform <ArrowUpRight size={16} className="inline ml-2" />
             </Link>
-            <button className="btn-secondary px-8 py-4 text-base w-full sm:w-auto">
-              Watch Demo
-            </button>
           </div>
         </div>
 

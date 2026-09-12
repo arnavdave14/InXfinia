@@ -6,6 +6,8 @@ import { MainNavbar } from "@/components/MainNavbar";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
+import { FloatingChatbot } from "@/components/FloatingChatbot";
+
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 const syne = Syne({ subsets: ["latin"], display: "swap", variable: "--font-syne" });
 
@@ -22,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MainNavbar />
           {children}
           <Footer />
+          <FloatingChatbot />
           <ScrollToTop />
         </LenisProvider>
       </body>
