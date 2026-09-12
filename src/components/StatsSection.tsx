@@ -8,9 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { number: "10+", unit: "Years", desc: "A decade building enterprise AI infrastructure for teams that refuse to compromise on performance or reliability." },
-  { number: "500M+", unit: "API Calls / Day", desc: "Our inference engine handles half a billion requests daily across 50+ countries with zero cold-start latency." },
-  { number: "10×", unit: "Faster", desc: "InXfinia models serve results 10× faster than traditional cloud AI endpoints, measured at p99 across all regions." },
+  { number: "5+", unit: "Years Experience", desc: "Our founding engineering team brings over half a decade of deep expertise in building robust, scalable AI infrastructure." },
+  { number: "99.9%", unit: "Uptime SLA", desc: "Enterprise-grade reliability built from day one. Our distributed architecture ensures your AI endpoints are always online." },
+  { number: "<10ms", unit: "Latency Overhead", desc: "Highly optimized inference engines that add near-zero latency, ensuring lightning-fast responses for your end-users." },
 ];
 
 export function StatsSection() {
@@ -54,7 +54,7 @@ export function StatsSection() {
         {STATS.map((stat, i) => (
           <div
             key={i}
-            className="stat-item relative rounded-3xl p-6 md:p-8 lg:p-14 flex flex-col gap-4 lg:gap-6 overflow-hidden border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.05)] bg-white/30 backdrop-blur-3xl transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] group transform-gpu"
+            className="stat-item relative rounded-3xl p-6 md:p-8 lg:p-10 flex flex-col gap-4 lg:gap-6 overflow-hidden border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.05)] bg-white/30 backdrop-blur-3xl transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] group transform-gpu"
             style={{ opacity: 0 }}
           >
             {/* Ambient hover glow */}
@@ -64,7 +64,7 @@ export function StatsSection() {
               <div
                 className="font-black leading-none mb-3 tracking-tighter bg-clip-text text-transparent transform-gpu transition-transform duration-300 group-hover:scale-105 origin-left"
                 style={{
-                  fontSize: "clamp(3rem, 5.5vw, 5rem)",
+                  fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
                   fontFamily: "var(--font-syne)",
                   backgroundImage: "linear-gradient(135deg, #111111 0%, #5B21B6 100%)",
                 }}
