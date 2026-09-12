@@ -168,7 +168,7 @@ export function FloatingChatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end pointer-events-none">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[100] flex flex-col items-end pointer-events-none">
       <AnimatePresence>
         {/* The Chat UI */}
         {isOpen && (
@@ -177,44 +177,44 @@ export function FloatingChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-4 w-[350px] sm:w-[380px] h-[550px] max-h-[75vh] flex flex-col rounded-3xl overflow-hidden bg-white/90 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] pointer-events-auto origin-bottom-right"
+            className="mb-4 w-[calc(100vw-2rem)] sm:w-[380px] h-[500px] sm:h-[550px] max-h-[80vh] sm:max-h-[75vh] flex flex-col rounded-3xl overflow-hidden bg-white/90 backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] pointer-events-auto origin-bottom-right"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 bg-white/50 border-b border-gray-100">
+            <div className="flex items-center justify-between px-4 py-3 sm:px-5 sm:py-4 bg-white/50 border-b border-gray-100">
               <div className="flex items-center gap-3">
                 {/* Replaced Image with a cool gradient icon */}
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#ec4899] to-[#3b82f6] flex items-center justify-center text-white shadow-inner border border-white/20 text-xl">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#ec4899] to-[#3b82f6] flex items-center justify-center text-white shadow-inner border border-white/20 text-lg sm:text-xl shrink-0">
                   👩🏻‍💻
                 </div>
-                <div>
-                  <h3 className="font-bold text-[#111] text-sm flex items-center gap-1">
-                    Inyxa <Sparkles size={14} className="text-[#a855f7]" />
+                <div className="min-w-0">
+                  <h3 className="font-bold text-[#111] text-sm flex items-center gap-1 truncate">
+                    Inyxa <Sparkles size={14} className="text-[#a855f7] shrink-0" />
                   </h3>
                   <p className="text-xs text-gray-500 font-medium flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Online
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shrink-0" /> Online
                   </p>
                 </div>
               </div>
               
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-500 transition-colors border border-gray-200 shadow-sm"
+                className="w-8 h-8 shrink-0 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center text-gray-500 transition-colors border border-gray-200 shadow-sm"
               >
                 <X size={16} />
               </button>
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4 scrollbar-hide bg-[#f8fafc]">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5 flex flex-col gap-4 scrollbar-hide bg-[#f8fafc]">
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.sender === "ai" ? (
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="bg-white rounded-2xl rounded-tl-sm p-4 border border-gray-200 shadow-sm w-full max-w-[85%] group"
+                      className="bg-white rounded-2xl rounded-tl-sm p-3 sm:p-4 border border-gray-200 shadow-sm w-full max-w-[90%] sm:max-w-[85%] group"
                     >
-                      <p className="text-[14px] leading-relaxed text-[#334155]">
+                      <p className="text-[13.5px] sm:text-[14px] leading-relaxed text-[#334155] break-words">
                         {msg.text}
                       </p>
                       <button 
@@ -229,7 +229,7 @@ export function FloatingChatbot() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="bg-blue-600 text-white px-4 py-3 rounded-2xl rounded-br-sm text-[14px] shadow-sm max-w-[85%]"
+                      className="bg-blue-600 text-white px-4 py-2.5 sm:py-3 rounded-2xl rounded-br-sm text-[13.5px] sm:text-[14px] shadow-sm max-w-[90%] sm:max-w-[85%] break-words"
                     >
                       {msg.text}
                     </motion.div>
@@ -253,7 +253,7 @@ export function FloatingChatbot() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white border-t border-gray-100 relative">
+            <div className="p-3 sm:p-4 bg-white border-t border-gray-100 relative">
               {/* Listening Animation Overlay */}
               <AnimatePresence>
                 {isListening && (
@@ -308,7 +308,7 @@ export function FloatingChatbot() {
                   disabled={!inputValue.trim()}
                   className="w-11 h-11 flex-shrink-0 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
                 >
-                  <Send size={16} className="ml-1" />
+                  <Send size={16} />
                 </button>
               </form>
             </div>
