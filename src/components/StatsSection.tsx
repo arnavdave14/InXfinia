@@ -8,9 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { number: "5+", unit: "Years Experience", desc: "Our founding engineering team brings over half a decade of deep expertise in building robust, scalable AI infrastructure." },
-  { number: "99.9%", unit: "Uptime SLA", desc: "Enterprise-grade reliability built from day one. Our distributed architecture ensures your AI endpoints are always online." },
-  { number: "<10ms", unit: "Latency Overhead", desc: "Highly optimized inference engines that add near-zero latency, ensuring lightning-fast responses for your end-users." },
+  { number: "BUILD", unit: "DIGITAL PRODUCTS THAT SOLVE REAL PROBLEMS", desc: "Development, design, and product engineering come together to turn business requirements into usable digital solutions." },
+  { number: "INSIGHT", unit: "TURN DATA AND TECHNOLOGY INTO ADVANTAGE", desc: "Analytics, automation, and AI/ML help businesses understand information, improve processes, and create smarter digital capabilities." },
+  { number: "GROW", unit: "CREATE DIGITAL MOMENTUM THAT MOVES THE BUSINESS", desc: "Performance marketing, digital experiences, technology, and automation work together to support customer acquisition, conversion, and business growth." },
 ];
 
 export function StatsSection() {
@@ -64,7 +64,7 @@ export function StatsSection() {
               <div
                 className="font-black leading-none mb-3 tracking-tighter bg-clip-text text-transparent transform-gpu transition-transform duration-300 group-hover:scale-105 origin-left"
                 style={{
-                  fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
+                  fontSize: "clamp(1.5rem, 2vw, 3.5rem)",
                   fontFamily: "var(--font-syne)",
                   backgroundImage: "linear-gradient(135deg, #111111 0%, #5B21B6 100%)",
                 }}

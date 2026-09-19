@@ -6,7 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MARQUEE_TEXT = "TO LEARN ✦ TO BUILD ✦ TO SCALE WITH AI ✦ READY FOR THE FUTURE ✦ INTELLIGENT AUTOMATION ✦ REAL-TIME INFERENCE ✦ ";
+const MARQUEE_TEXT =
+  "BUILD DIGITAL ✦ DESIGN BETTER ✦ TURN DATA INTO INSIGHT ✦ AUTOMATE WHAT MATTERS ✦ ACCELERATE GROWTH ✦ POWER THE FUTURE WITH AI ✦";
 const REPEATED = Array(8).fill(MARQUEE_TEXT).join(" ");
 
 export function MarqueeBanner() {
@@ -17,7 +18,7 @@ export function MarqueeBanner() {
     if (!textRef.current || !containerRef.current) return;
 
     let direction = -1; // 1 = right, -1 = left
-    
+
     // Infinite horizontal movement
     const marqueeTween = gsap.to(textRef.current, {
       xPercent: -50,
@@ -40,7 +41,7 @@ export function MarqueeBanner() {
             overwrite: true,
           });
         }
-        
+
         // Temporarily speed up based on scroll velocity (less aggressive)
         gsap.to(marqueeTween, {
           timeScale: direction * (1 + Math.abs(self.getVelocity() / 5000)), // Greatly reduced scroll effect
@@ -52,45 +53,51 @@ export function MarqueeBanner() {
               duration: 1,
               overwrite: true,
             });
-          }
+          },
         });
       },
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="relative z-10 -rotate-[2deg] my-2 md:my-10 overflow-hidden transform-gpu origin-center scale-110">
+    <div
+      ref={containerRef}
+      className="relative z-10 -rotate-[2deg] my-2 md:my-10 overflow-hidden transform-gpu origin-center scale-110"
+    >
       {/* Blurred background track */}
       <div className="bg-white/30 backdrop-blur-xl py-6 overflow-hidden border-y border-white/50 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
         <div className="flex whitespace-nowrap overflow-hidden">
-          
-          <div ref={textRef} className="flex whitespace-nowrap shrink-0 items-center">
+          <div
+            ref={textRef}
+            className="flex whitespace-nowrap shrink-0 items-center"
+          >
             <span
-              className="text-base md:text-5xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
+              className="text-base md:text-3xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
               style={{
                 fontFamily: "var(--font-syne)",
-                backgroundImage: "linear-gradient(90deg, #111111, #5B21B6, #1D4ED8, #111111)",
+                backgroundImage:
+                  "linear-gradient(90deg, #111111, #5B21B6, #1D4ED8, #111111)",
                 backgroundSize: "200% 100%",
               }}
             >
               {REPEATED}
             </span>
             <span
-              className="text-base md:text-5xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
+              className="text-base md:text-3xl font-black uppercase tracking-widest shrink-0 bg-clip-text text-transparent px-4"
               style={{
                 fontFamily: "var(--font-syne)",
-                backgroundImage: "linear-gradient(90deg, #111111, #5B21B6, #1D4ED8, #111111)",
+                backgroundImage:
+                  "linear-gradient(90deg, #111111, #5B21B6, #1D4ED8, #111111)",
                 backgroundSize: "200% 100%",
               }}
             >
               {REPEATED}
             </span>
           </div>
-
         </div>
       </div>
     </div>
