@@ -22,7 +22,8 @@ const PANELS = [
     tag: "01 / Foundational",
     icon: "◈",
     href: "/solutions/strategy",
-    metrics: ["99.99% Uptime", "Zero Trust", "Auto-Scale"],
+    metrics: [],
+    // metrics: ["99.99% Uptime", "Zero Trust", "Auto-Scale"],
   },
   {
     id: "expertise",
@@ -37,7 +38,8 @@ const PANELS = [
     tag: "02 / Technical",
     icon: "◉",
     href: "/solutions/expertise",
-    metrics: ["10+ Years", "200+ Engineers", "SOC 2"],
+    metrics: [],
+    // metrics: ["10+ Years", "200+ Engineers", "SOC 2"],
   },
   {
     id: "analysis",
@@ -52,7 +54,8 @@ const PANELS = [
     tag: "03 / Intelligence",
     icon: "◇",
     href: "/solutions/analysis",
-    metrics: ["Real-time", "10M+ Events/s", "ML-Powered"],
+    metrics: [],
+    // metrics: ["Real-time", "10M+ Events/s", "ML-Powered"],
   },
   {
     id: "consulting",
@@ -67,7 +70,7 @@ const PANELS = [
     tag: "04 / Partnership",
     icon: "◎",
     href: "/solutions/consulting",
-    metrics: ["24/7 Support", "Dedicated Team", "SLA Backed"],
+    metrics: [],
   },
 ];
 

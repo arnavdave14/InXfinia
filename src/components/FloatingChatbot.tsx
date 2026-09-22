@@ -360,7 +360,7 @@ export function FloatingChatbot() {
               exit={{ scale: 0.5, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <MessageCircle size={28} />
+              <img src="/logo_icon_light.png" alt="Chat" className="w-8 h-8 object-contain" />
             </motion.div>
           )}
         </AnimatePresence>

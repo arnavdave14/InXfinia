@@ -65,12 +65,8 @@ export function Navbar() {
         <div className="flex flex-row justify-between items-center w-full">
           {/* Logo */}
           <div className="flex items-center shrink-0 w-[120px]">
-            <Link
-              href="/"
-              className="text-xl font-bold tracking-tight text-white"
-              style={{ fontFamily: "var(--font-space-grotesk, sans-serif)" }}
-            >
-              In<span className="text-[#22d3a8]">X</span>finia
+            <Link href="/" className="flex items-center">
+              <img src="/solid_full_logo.png" alt="InXfinia Logo" className="h-10 md:h-12 w-auto object-contain scale-[1.2] ml-2" />
             </Link>
           </div>
 

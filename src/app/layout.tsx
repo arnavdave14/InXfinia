@@ -14,6 +14,15 @@ const syne = Syne({ subsets: ["latin"], display: "swap", variable: "--font-syne"
 export const metadata: Metadata = {
   title: "InXfinia | AI Infrastructure",
   description: "End-to-end AI Infrastructure platform.",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

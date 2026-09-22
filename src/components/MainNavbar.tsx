@@ -112,9 +112,8 @@ export function MainNavbar() {
       {/* ── Main bar ── */}
       <div className="flex items-center justify-between px-6 py-3">
 
-        {/* Logo */}
-        <Link href="/" className="text-xl font-black tracking-tighter text-[#090A0F] shrink-0" style={{ fontFamily: "var(--font-syne)" }}>
-          In<span style={{ color: "#5B21B6" }}>X</span>finia
+        <Link href="/" className="flex items-center shrink-0">
+          <img src="/solid_full_logo_light.png" alt="InXfinia Logo" className="h-10 md:h-12 w-auto object-contain scale-[1.2] ml-2" />
         </Link>
 
         {/* Desktop nav links */}

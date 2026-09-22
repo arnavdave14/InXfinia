@@ -47,7 +47,7 @@ function WordReveal({ text, delay = 0, className = "" }: { text: string; delay?:
             transition={{ duration: 0.6, delay: delay + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
             {word === "InXfinia" ? (
-              <>In<span className="text-[#5B21B6]">X</span>finia</>
+              <img src="/solid_full_logo_light.png" alt="InXfinia Logo" className="h-[clamp(5rem,16vw,14rem)] w-auto object-contain -mt-4 md:-mt-8" />
             ) : (
               word
             )}
@@ -162,7 +162,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
                   {/* InXfinia tagline */}
                   {isLast && (
                     <motion.span
-                      className="font-mono text-xs uppercase tracking-[0.35em] text-violet-500 mt-3"
+                      className="font-mono text-sm md:text-base font-bold uppercase tracking-[0.4em] text-violet-500 -mt-8 md:-mt-20 z-10"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.65, duration: 0.5, ease: "easeOut" }}
