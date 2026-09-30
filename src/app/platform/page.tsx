@@ -24,40 +24,40 @@ export default function PlatformPage() {
 
   const cards = [
     {
-      id: "compute",
-      title: "Hyperscale Compute",
-      desc: "H100 GPU clusters & optimized TensorRT kernels.",
+      id: "product",
+      title: "Product Engineering",
+      desc: "Build scalable digital products and software systems.",
       icon: <Cpu size={40} />,
       color: "#F43F5E",
       bg: "from-[#F43F5E]/5 to-transparent",
-      features: ["Auto-scaling Node Pools", "Custom CUDA Kernels", "Zero-downtime Deployments"]
+      features: ["Web & Mobile Development", "Custom Software Applications", "Scalable Product Architecture"]
+    },
+    {
+      id: "ai",
+      title: "AI Intelligence",
+      desc: "AI systems built to understand context, knowledge, and business workflows.",
+      icon: <Sparkles size={40} />,
+      color: "#1D4ED8",
+      bg: "from-[#1D4ED8]/5 to-transparent",
+      features: ["Business Knowledge Ingestion", "Context-Aware AI", "AI Workflow Orchestration"]
     },
     {
       id: "data",
-      title: "Vector Streams",
-      desc: "Real-time Kafka & embedding integrations.",
+      title: "Connected Data",
+      desc: "Bring business data, systems, and operations together for real-time visibility.",
       icon: <Database size={40} />,
-      color: "#1D4ED8",
-      bg: "from-[#1D4ED8]/5 to-transparent",
-      features: ["Distributed Vector Search", "Real-time Sync", "Multi-region Replication"]
-    },
-    {
-      id: "edge",
-      title: "Global Edge",
-      desc: "Zero-latency distributed deployment.",
-      icon: <Globe size={40} />,
       color: "#059669",
       bg: "from-[#059669]/5 to-transparent",
-      features: ["250+ PoPs Worldwide", "Intelligent Routing", "Edge Caching"]
+      features: ["Business Intelligence", "Dashboards & Reporting", "Data Integration"]
     },
     {
-      id: "api",
-      title: "Secure Gateway",
-      desc: "Unified GraphQL routing and caching layer.",
-      icon: <Shield size={40} />,
+      id: "automation",
+      title: "Automation & Integration",
+      desc: "Connect systems, automate workflows, and reduce repetitive business operations.",
+      icon: <ServerCog size={40} />,
       color: "#D97706",
       bg: "from-[#D97706]/5 to-transparent",
-      features: ["DDoS Protection", "Rate Limiting", "Schema Stitching"]
+      features: ["Business Process Automation", "CRM & Workflow Integration", "AI-Powered Automation"]
     }
   ];
 
@@ -87,16 +87,16 @@ export default function PlatformPage() {
           </motion.div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 text-[#090A0F] drop-shadow-xl flex flex-col items-center justify-center">
-            <motion.span custom={0} variants={textVariants} initial="hidden" animate="visible">The modern</motion.span>
+            <motion.span custom={0} variants={textVariants} initial="hidden" animate="visible">The Modern</motion.span>
             <motion.div custom={1} variants={textVariants} initial="hidden" animate="visible" className="h-[80px] md:h-[120px] w-full flex items-center justify-center">
-               <MorphingText texts={["AI Engine.", "Data Layer.", "Orchestrator.", "Inference."]} className="text-[#5B21B6] !h-[80px] md:!h-[120px]" />
+               <MorphingText texts={["Digital Platform.", "AI Engine.", "Automation Layer.", "Data Intelligence.", "Product Infrastructure."]} className="text-[#5B21B6] !h-[80px] md:!h-[120px]" />
             </motion.div>
           </h1>
           <motion.p 
             custom={2} variants={textVariants} initial="hidden" animate="visible"
-            className="text-[#090A0F]/60 max-w-xl mx-auto text-lg md:text-2xl font-medium mt-6"
+            className="text-[#090A0F]/60 max-w-2xl mx-auto text-lg md:text-2xl font-medium mt-6"
           >
-            A unified stack for inference, data streaming, and orchestration. Built for zero latency.
+            A unified technology foundation for building intelligent products/services, powering AI, automating workflows, and transforming data into scalable digital solutions.
           </motion.p>
         </div>
       </section>
@@ -129,7 +129,7 @@ export default function PlatformPage() {
                 <div className="flex-1 flex flex-col justify-center relative z-10 w-full">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/50 bg-white/60 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 w-fit shadow-sm"
                        style={{ color: card.color }}>
-                    <Sparkles size={14} /> Node {index + 1}
+                    <Sparkles size={14} /> Layer {index + 1}
                   </div>
                   <h2 className="text-[clamp(2.2rem,8vw,3.75rem)] font-black tracking-tighter mb-3 md:mb-4 text-[#090A0F] leading-[1.1]">{card.title}</h2>
                   <p className="text-base md:text-xl text-[#090A0F]/60 font-medium mb-6 md:mb-8 leading-relaxed max-w-2xl">{card.desc}</p>
@@ -159,32 +159,31 @@ export default function PlatformPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 tracking-tight text-[#090A0F] leading-[1.1]">
-                Built for <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B21B6] via-[#1D4ED8] to-[#22d3a8]">extreme scale.</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-[#090A0F] leading-[1.1] break-words">
+                Built to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B21B6] via-[#1D4ED8] to-[#22d3a8]">turn ideas into technology.</span>
               </h2>
-              <p className="text-[#090A0F]/60 font-medium leading-relaxed text-xl mb-10">
-                The platform is designed from the ground up to handle massive throughput with predictable sub-millisecond latencies. By removing virtualization overhead, we achieve unparalleled performance metrics.
+              <p className="text-[#090A0F]/60 font-medium leading-relaxed text-lg lg:text-xl mb-10 max-w-xl">
+                A unified foundation for transforming complex ideas into intelligent, scalable technology built around real-world needs.
               </p>
               
-              <div className="flex flex-wrap gap-6">
+              <div className="flex flex-col sm:flex-row gap-4 lg:gap-6">
                 <motion.div 
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="glass-strong bg-white/80 border border-[rgba(9,10,15,0.05)] px-8 py-6 rounded-3xl shadow-xl flex-1 min-w-[200px]"
+                  className="glass-strong bg-white/80 border border-[rgba(9,10,15,0.05)] px-6 py-5 lg:px-8 lg:py-6 rounded-3xl shadow-xl flex-1"
                 >
-                  <div className="text-4xl lg:text-5xl font-black text-[#5B21B6] tracking-tighter mb-2" style={{ fontFamily: "var(--font-syne)" }}>
-                    <PlatformAnimatedCounter value={100} suffix="M+" />
+                  <div className="text-3xl lg:text-4xl font-black text-[#5B21B6] tracking-tight mb-2">
+                    BUILD
                   </div>
-                  <div className="text-sm font-bold text-[#090A0F]/50 uppercase tracking-widest">Requests / Sec</div>
+                  <div className="text-[10px] lg:text-xs font-bold text-[#090A0F]/50 uppercase tracking-widest">For Intelligence & Evolve</div>
                 </motion.div>
                 <motion.div 
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="glass-strong bg-white/80 border border-[rgba(9,10,15,0.05)] px-8 py-6 rounded-3xl shadow-xl flex-1 min-w-[200px]"
+                  className="glass-strong bg-white/80 border border-[rgba(9,10,15,0.05)] px-6 py-5 lg:px-8 lg:py-6 rounded-3xl shadow-xl flex-1"
                 >
-                  <div className="text-4xl lg:text-5xl font-black text-[#22d3a8] tracking-tighter mb-2" style={{ fontFamily: "var(--font-syne)" }}>
-                    <PlatformAnimatedCounter value={1.2} suffix="ms" decimals={1} />
+                  <div className="text-3xl lg:text-4xl font-black text-[#22d3a8] tracking-tight mb-2">
+                    AUTOMATE
                   </div>
-                  <div className="text-sm font-bold text-[#090A0F]/50 uppercase tracking-widest">P99 Latency</div>
+                  <div className="text-[10px] lg:text-xs font-bold text-[#090A0F]/50 uppercase tracking-widest">To Scale</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -227,7 +226,7 @@ function ServerMetricsDashboard() {
             <Activity className="text-[#5B21B6]" size={24} />
           </div>
           <div>
-            <h3 className="font-black text-xl text-[#090A0F] tracking-tight" style={{ fontFamily: "var(--font-syne)" }}>Global Network Load</h3>
+            <h3 className="font-bold text-lg lg:text-xl text-[#090A0F] tracking-tight">Global Network Load</h3>
             <div className="flex items-center gap-2 mt-1">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22d3a8] opacity-75"></span>
@@ -270,15 +269,15 @@ function ServerMetricsDashboard() {
       <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-6">
         <div className="bg-white/80 p-3 sm:p-4 rounded-2xl border border-[rgba(9,10,15,0.05)] shadow-sm hover:shadow-md transition-shadow">
           <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#090A0F]/50 font-bold mb-1">CPU Load</p>
-          <p className="text-base sm:text-lg font-black text-[#090A0F]" style={{ fontFamily: "var(--font-syne)" }}>24.8%</p>
+          <p className="text-sm sm:text-lg font-bold text-[#090A0F]">24.8%</p>
         </div>
         <div className="bg-white/80 p-3 sm:p-4 rounded-2xl border border-[rgba(9,10,15,0.05)] shadow-sm hover:shadow-md transition-shadow">
           <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#090A0F]/50 font-bold mb-1">Bandwidth</p>
-          <p className="text-base sm:text-lg font-black text-[#090A0F]" style={{ fontFamily: "var(--font-syne)" }}>12.4 TB/s</p>
+          <p className="text-sm sm:text-lg font-bold text-[#090A0F]">12.4 TB/s</p>
         </div>
         <div className="bg-white/80 p-3 sm:p-4 rounded-2xl border border-[rgba(9,10,15,0.05)] shadow-sm hover:shadow-md transition-shadow">
           <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-[#090A0F]/50 font-bold mb-1">Active Nodes</p>
-          <p className="text-base sm:text-lg font-black text-[#22d3a8]" style={{ fontFamily: "var(--font-syne)" }}>14,092</p>
+          <p className="text-sm sm:text-lg font-bold text-[#22d3a8]">14,092</p>
         </div>
       </div>
     </div>
