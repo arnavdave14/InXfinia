@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const NAV_LINKS = [
-  { name: "Platform",   href: "/platform"        },
+  // { name: "Platform",   href: "/platform"        },
   { name: "Portfolio",  href: "/portfolio"        },
   // { name: "Developers", href: "/developers"       },
   { name: "Services",   href: "/services"         },
