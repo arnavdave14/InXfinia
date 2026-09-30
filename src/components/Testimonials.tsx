@@ -309,12 +309,12 @@ export function TeamSection() {
           className="mt-12 glass rounded-[1.5rem] p-6 md:p-8 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 relative z-20 bg-white/60 backdrop-blur-3xl border border-white/80 shadow-2xl"
         >
           <div>
-            <div className="text-3xl md:text-4xl font-black text-[#090A0F] tracking-tight mb-2">Join 300+ engineers.</div>
-            <div className="text-[#4a4453] text-sm font-medium">We&apos;re growing fast. Every role is open to remote.</div>
+            <div className="text-3xl md:text-4xl font-black text-[#090A0F] tracking-tight mb-2">Check role availability.</div>
+            <div className="text-[#4a4453] text-sm font-medium">See if there's a perfect spot for you right now.</div>
           </div>
-          <button className="btn-primary flex-shrink-0 shadow-[0_10px_20px_rgba(29,78,216,0.3)] hover:shadow-[0_15px_30px_rgba(29,78,216,0.4)] transition-all">
+          <a href="/careers" className="btn-primary flex-shrink-0 shadow-[0_10px_20px_rgba(29,78,216,0.3)] hover:shadow-[0_15px_30px_rgba(29,78,216,0.4)] transition-all text-center">
             View Open Roles
-          </button>
+          </a>
         </div>
       </div>
     </section>

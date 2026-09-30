@@ -22,7 +22,7 @@ const LINKS = {
     { name: "Manifesto", href: "/manifesto" },
     { name: "Brand", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Careers", href: "/about" },
+    { name: "Careers", href: "/careers" },
   ],
   COMMUNITY: [
     { name: "X", href: "https://x.com" },
