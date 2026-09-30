@@ -1,13 +1,95 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MapPin, Phone, ArrowRight, Cloud, Terminal } from "lucide-react";
 import { SplitText, BlurText } from "@/components/TextAnimations";
 
-const GithubIcon = ({ className }: { className?: string }) => (
+const CloudSecretBase = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-white/60 backdrop-blur-2xl cursor-pointer overflow-hidden"
+      onClick={onClose}
+    >
+      {/* Funky light-theme background blobs */}
+      <div className="absolute top-1/4 left-1/4 w-[50vw] h-[50vw] bg-blue-300/30 blur-[100px] rounded-full mix-blend-multiply pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[40vw] h-[40vw] bg-purple-300/30 blur-[100px] rounded-full mix-blend-multiply pointer-events-none"></div>
+      
+      {/* Drifting Clouds */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ 
+            x: typeof window !== 'undefined' ? Math.random() * window.innerWidth - window.innerWidth / 2 : 0, 
+            y: typeof window !== 'undefined' ? Math.random() * window.innerHeight - window.innerHeight / 2 : 0,
+            opacity: 0,
+            scale: 0.5
+          }}
+          animate={{ 
+            x: typeof window !== 'undefined' ? (Math.random() - 0.5) * window.innerWidth : 0,
+            y: typeof window !== 'undefined' ? (Math.random() - 0.5) * window.innerHeight : 0,
+            opacity: Math.random() * 0.4 + 0.2,
+            scale: Math.random() * 2 + 1
+          }}
+          transition={{ 
+            duration: Math.random() * 10 + 10, 
+            repeat: Infinity, 
+            repeatType: "reverse",
+            ease: "easeInOut" 
+          }}
+          className="absolute text-blue-500/10"
+        >
+          <Cloud size={160} strokeWidth={1} fill="currentColor" />
+        </motion.div>
+      ))}
+
+      <motion.div 
+        initial={{ scale: 0.8, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 100 }}
+        className="relative z-10 text-center px-4 max-w-4xl"
+      >
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+          className="inline-block mb-6 text-[100px] md:text-[140px]"
+        >
+          ☁️
+        </motion.div>
+        
+        <h2 className="font-syne text-5xl md:text-7xl font-extrabold text-black mb-6 leading-tight tracking-tighter">
+          No physical walls.<br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+            Just infinite vibes.
+          </span>
+        </h2>
+        
+        <p className="font-mono text-black/50 tracking-widest uppercase text-xs md:text-sm font-bold bg-white/80 px-6 py-3 rounded-full inline-block shadow-sm border border-black/5 hover:bg-white transition-colors">
+          Click anywhere to return to reality
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
+const InstagramIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const WhatsAppIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+  </svg>
+);
+
+const GmailIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
   </svg>
 );
 
@@ -30,9 +112,10 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
-  
+
   const [buttonPos, setButtonPos] = useState({ x: 0, y: 0 });
   const [isEvading, setIsEvading] = useState(false);
+  const [showClouds, setShowClouds] = useState(false);
 
   const isFormValid = name.trim() !== "" && email.trim() !== "" && message.trim() !== "";
 
@@ -42,7 +125,7 @@ export default function ContactPage() {
       // Evade smoothly away from the cursor across a reasonable area so it stays visible
       let newX = (Math.random() - 0.5) * 600; // random jump X (-300 to 300)
       let newY = (Math.random() - 0.5) * 400; // random jump Y (-200 to 200)
-      
+
       // Ensure it jumps a minimum distance away from its current position
       if (Math.abs(newX - buttonPos.x) < 150) {
         newX = newX > buttonPos.x ? newX + 150 : newX - 150;
@@ -50,7 +133,7 @@ export default function ContactPage() {
       if (Math.abs(newY - buttonPos.y) < 100) {
         newY = newY > buttonPos.y ? newY + 100 : newY - 100;
       }
-      
+
       setButtonPos({ x: newX, y: newY });
     }
   };
@@ -79,19 +162,19 @@ export default function ContactPage() {
         <div className="orb orb-5" />
       </div>
       <main className="min-h-screen pt-32 pb-20 relative z-10 px-6 md:px-12 lg:px-24">
-        
+
         <div className="max-w-7xl mx-auto overflow-visible">
           {/* Header */}
           <div className="mb-16 lg:mb-24">
             <h1 className="font-syne text-[clamp(3rem,8vw,6rem)] font-extrabold leading-none tracking-tight mb-6 flex flex-col">
               <SplitText text="Let's build" delay={0.1} />
-              <SplitText 
-                text="the future." 
-                delay={0.3} 
+              <SplitText
+                text="the future."
+                delay={0.3}
                 className="text-transparent bg-clip-text bg-gradient-to-r from-black via-black/80 to-black/40"
               />
             </h1>
-            <BlurText 
+            <BlurText
               text="Whether you have a specific project in mind or just want to explore possibilities, we're ready to collaborate."
               delay={0.6}
               className="font-mono text-black/50 tracking-widest uppercase text-sm max-w-xl leading-relaxed"
@@ -99,7 +182,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 relative">
-            
+
             {/* Left Column: Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -114,23 +197,39 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-syne font-bold text-xl mb-1">Email Us</h3>
-                    <a href="mailto:hello@inxfinia.com" className="font-mono text-black/60 hover:text-black transition-colors">
-                      hello@inxfinia.com
+                    <a href="mailto:hey@inxfinia.com" className="font-mono text-black/60 hover:text-black transition-colors">
+                      hey@inxfinia.com
                     </a>
                   </div>
                 </div>
 
                 <div className="group flex items-start gap-4">
-                  <div className="p-3 bg-black/5 rounded-full transition-colors group-hover:bg-black/10">
+                  <div className="p-3 bg-black/5 rounded-full transition-all group-hover:bg-black/10 group-hover:scale-110">
                     <MapPin className="w-6 h-6 text-black" />
                   </div>
                   <div>
-                    <h3 className="font-syne font-bold text-xl mb-1">Headquarters</h3>
-                    <p className="font-mono text-black/60 leading-relaxed">
-                      123 Innovation Drive<br />
-                      Tech District, CA 94103<br />
-                      United States
-                    </p>
+                    <h3 className="font-syne font-bold text-xl mb-2 group-hover:text-emerald-600 transition-colors">Coordinates</h3>
+                    <div className="font-mono text-black/60 leading-relaxed">
+                      <div className="flex items-center gap-2 text-black/80 font-semibold text-lg">
+                        <span className="relative flex h-3 w-3">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                        </span>
+                        Everywhere (The Internet)
+                      </div>
+                      <span 
+                        className="block mt-2 cursor-pointer hover:text-emerald-500 transition-colors inline-block group/cloud text-lg"
+                        onClick={() => setShowClouds(true)}
+                      >
+                        Living in the Cloud ☁️
+                        <span className="opacity-0 group-hover/cloud:opacity-100 text-xs ml-2 text-black/40 transition-opacity">
+                          (Click me)
+                        </span>
+                      </span>
+                      <span className="block text-sm text-black/40 mt-3 border-t border-black/10 pt-3 w-fit">
+                        No physical walls. Infinite scale.
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -154,7 +253,9 @@ export default function ContactPage() {
                   {[
                     { icon: TwitterIcon, href: "#" },
                     { icon: LinkedinIcon, href: "#" },
-                    { icon: GithubIcon, href: "#" }
+                    { icon: InstagramIcon, href: "#" },
+                    { icon: WhatsAppIcon, href: "#" },
+                    { icon: GmailIcon, href: "mailto:hey@inxfinia.com" }
                   ].map((social, idx) => (
                     <a
                       key={idx}
@@ -175,15 +276,15 @@ export default function ContactPage() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
               className="relative z-20"
             >
-              <form 
+              <form
                 onSubmit={handleSubmit}
                 className="bg-white/40 backdrop-blur-xl border border-white/40 p-8 md:p-12 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
               >
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="name" className="font-mono text-xs uppercase tracking-widest text-black/50 font-semibold">Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -193,8 +294,8 @@ export default function ContactPage() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="email" className="font-mono text-xs uppercase tracking-widest text-black/50 font-semibold">Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -206,8 +307,8 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-2 mb-6">
                   <label htmlFor="company" className="font-mono text-xs uppercase tracking-widest text-black/50 font-semibold">Company (Optional)</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="company"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
@@ -218,7 +319,7 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-2 mb-12">
                   <label htmlFor="message" className="font-mono text-xs uppercase tracking-widest text-black/50 font-semibold">Message</label>
-                  <textarea 
+                  <textarea
                     id="message"
                     rows={4}
                     value={message}
@@ -232,15 +333,18 @@ export default function ContactPage() {
                 <div className="relative w-full h-[56px] z-50">
                   {/* Left-behind text placeholder */}
                   {isEvading && (
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <span className="font-mono font-bold text-sm tracking-widest uppercase text-black/40">
                         CAUGHT ME IF YOU CAN! 🏃💨
+                      </span>
+                      <span className="font-mono text-[10px] tracking-widest uppercase text-black/30 mt-1">
+                        (Fill the form and I'll come back)
                       </span>
                     </div>
                   )}
 
                   {/* The moving button */}
-                  <div 
+                  <div
                     className="absolute inset-0 w-full h-full"
                     style={{
                       transform: `translate(${buttonPos.x}px, ${buttonPos.y}px)`,
@@ -253,8 +357,8 @@ export default function ContactPage() {
                     {!isFormValid && (
                       <div className="absolute -inset-[80px] z-10 cursor-not-allowed" />
                     )}
-                    
-                    <button 
+
+                    <button
                       type={isFormValid ? "submit" : "button"}
                       onClick={(e) => {
                         if (!isFormValid) {
@@ -280,6 +384,11 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+
+      {/* Cloud Hacker Easter Egg Overlay */}
+      <AnimatePresence>
+        {showClouds && <CloudSecretBase onClose={() => setShowClouds(false)} />}
+      </AnimatePresence>
     </>
   );
 }

@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const LINKS = {
+  /*
   PRODUCT: [
     { name: "Web App", href: "/platform" },
     { name: "Desktop App", href: "/platform" },
@@ -14,6 +15,7 @@ const LINKS = {
     { name: "Docs", href: "/developers" },
     { name: "MCP", href: "/developers" },
   ],
+  */
   COMPANY: [
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
@@ -26,7 +28,7 @@ const LINKS = {
     { name: "X", href: "https://x.com" },
     { name: "LinkedIn", href: "https://linkedin.com" },
     { name: "Instagram", href: "https://instagram.com" },
-    { name: "Discord", href: "https://discord.com" },
+    { name: "WhatsApp", href: "#" },
   ],
 };
 
@@ -80,7 +82,7 @@ export function Footer() {
           </div>
 
           {/* Right: Links Grid */}
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 pl-0 lg:pl-10 mt-6 lg:mt-0">
+          <div className="lg:col-span-7 grid grid-cols-2 gap-6 md:gap-16 pl-0 lg:pl-10 mt-6 lg:mt-0 md:justify-items-center">
             {Object.entries(LINKS).map(([cat, links]) => (
               <div key={cat} className="flex flex-col">
                 <h4 className="text-[12px] font-bold tracking-wider text-[#ffffff] mb-6 uppercase hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] cursor-default transition-all duration-300">{cat}</h4>
