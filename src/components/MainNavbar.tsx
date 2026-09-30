@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const NAV_LINKS = [
   { name: "Platform",   href: "/platform"        },
   { name: "Portfolio",  href: "/portfolio"        },
-  { name: "Developers", href: "/developers"       },
+  // { name: "Developers", href: "/developers"       },
   { name: "Services",   href: "/services"         },
   { name: "Marketing",  href: "/digital-marketing"},
   { name: "About",      href: "/about"            },

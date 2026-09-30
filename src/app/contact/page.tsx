@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight } from "lucide-react";
@@ -25,6 +26,49 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 );
 
 export default function ContactPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
+  
+  const [buttonPos, setButtonPos] = useState({ x: 0, y: 0 });
+  const [isEvading, setIsEvading] = useState(false);
+
+  const isFormValid = name.trim() !== "" && email.trim() !== "" && message.trim() !== "";
+
+  const handleEvade = () => {
+    if (!isFormValid) {
+      setIsEvading(true);
+      // Evade smoothly away from the cursor across a reasonable area so it stays visible
+      let newX = (Math.random() - 0.5) * 600; // random jump X (-300 to 300)
+      let newY = (Math.random() - 0.5) * 400; // random jump Y (-200 to 200)
+      
+      // Ensure it jumps a minimum distance away from its current position
+      if (Math.abs(newX - buttonPos.x) < 150) {
+        newX = newX > buttonPos.x ? newX + 150 : newX - 150;
+      }
+      if (Math.abs(newY - buttonPos.y) < 100) {
+        newY = newY > buttonPos.y ? newY + 100 : newY - 100;
+      }
+      
+      setButtonPos({ x: newX, y: newY });
+    }
+  };
+
+  // Reset if they finally fill the form
+  if (isFormValid && isEvading) {
+    setIsEvading(false);
+    setButtonPos({ x: 0, y: 0 });
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isFormValid) {
+      const text = `Hi INXFINIA,\n\nI'm ${name}${company ? ` from ${company}` : ''}.\nEmail: ${email}\n\nMessage:\n${message}`;
+      window.open(`https://wa.me/918989099821?text=${encodeURIComponent(text)}`, "_blank");
+    }
+  };
+
   return (
     <>
       <div className="mesh-bg" aria-hidden>
@@ -36,7 +80,7 @@ export default function ContactPage() {
       </div>
       <main className="min-h-screen pt-32 pb-20 relative z-10 px-6 md:px-12 lg:px-24">
         
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto overflow-visible">
           {/* Header */}
           <div className="mb-16 lg:mb-24">
             <h1 className="font-syne text-[clamp(3rem,8vw,6rem)] font-extrabold leading-none tracking-tight mb-6 flex flex-col">
@@ -54,7 +98,7 @@ export default function ContactPage() {
             />
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 relative">
             
             {/* Left Column: Contact Info */}
             <motion.div
@@ -96,8 +140,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-syne font-bold text-xl mb-1">Call Us</h3>
-                    <a href="tel:+14155550198" className="font-mono text-black/60 hover:text-black transition-colors">
-                      +1 (415) 555-0198
+                    <a href="tel:+918989099821" className="font-mono text-black/60 hover:text-black transition-colors">
+                      +91 89890 99821
                     </a>
                   </div>
                 </div>
@@ -129,9 +173,10 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              className="relative z-20"
             >
               <form 
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
                 className="bg-white/40 backdrop-blur-xl border border-white/40 p-8 md:p-12 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]"
               >
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -140,6 +185,8 @@ export default function ContactPage() {
                     <input 
                       type="text" 
                       id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="John Doe"
                       className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 font-sans outline-none focus:border-black/30 focus:bg-white/60 transition-all"
                     />
@@ -149,6 +196,8 @@ export default function ContactPage() {
                     <input 
                       type="email" 
                       id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="john@company.com"
                       className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 font-sans outline-none focus:border-black/30 focus:bg-white/60 transition-all"
                     />
@@ -160,33 +209,71 @@ export default function ContactPage() {
                   <input 
                     type="text" 
                     id="company"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
                     placeholder="Your Company"
                     className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 font-sans outline-none focus:border-black/30 focus:bg-white/60 transition-all"
                   />
                 </div>
 
-                <div className="flex flex-col gap-2 mb-8">
+                <div className="flex flex-col gap-2 mb-12">
                   <label htmlFor="message" className="font-mono text-xs uppercase tracking-widest text-black/50 font-semibold">Message</label>
                   <textarea 
                     id="message"
                     rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell us about your project..."
                     className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 font-sans outline-none focus:border-black/30 focus:bg-white/60 transition-all resize-none"
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit"
-                  className="group relative w-full inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 ease-out bg-[#090A0F] rounded-xl overflow-hidden hover:shadow-[0_0_40px_rgba(91,33,182,0.3)]"
-                >
-                  <span className="absolute inset-0 w-full h-full opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-                  <span className="relative flex items-center gap-3 font-mono tracking-widest uppercase text-sm">
-                    Send Message
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
-                  </span>
-                  <div className="absolute inset-0 border border-white/20 rounded-xl"></div>
-                  <div className="absolute inset-0 border border-white/0 group-hover:border-white/40 rounded-xl transition-colors duration-300 blur-[2px]"></div>
-                </button>
+                {/* The Evasive Button Area */}
+                <div className="relative w-full h-[56px] z-50">
+                  {/* Left-behind text placeholder */}
+                  {isEvading && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="font-mono font-bold text-sm tracking-widest uppercase text-black/40">
+                        CAUGHT ME IF YOU CAN! 🏃💨
+                      </span>
+                    </div>
+                  )}
+
+                  {/* The moving button */}
+                  <div 
+                    className="absolute inset-0 w-full h-full"
+                    style={{
+                      transform: `translate(${buttonPos.x}px, ${buttonPos.y}px)`,
+                      transition: isEvading ? "transform 0.3s cubic-bezier(0.2, 0, 0, 1)" : "transform 0.4s ease-out"
+                    }}
+                    onMouseEnter={handleEvade}
+                    onMouseOver={handleEvade}
+                  >
+                    {/* Invisible massive 80px padding to catch the mouse BEFORE it ever touches the button */}
+                    {!isFormValid && (
+                      <div className="absolute -inset-[80px] z-10 cursor-not-allowed" />
+                    )}
+                    
+                    <button 
+                      type={isFormValid ? "submit" : "button"}
+                      onClick={(e) => {
+                        if (!isFormValid) {
+                          e.preventDefault();
+                          handleEvade();
+                        }
+                      }}
+                      className={`group relative w-full h-full inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 ease-out bg-[#090A0F] rounded-xl overflow-hidden shadow-2xl ${isFormValid ? "hover:shadow-[0_0_40px_rgba(91,33,182,0.3)] pointer-events-auto" : "pointer-events-none"}`}
+                    >
+                      <span className="absolute inset-0 w-full h-full opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                      <span className="relative flex items-center gap-3 font-mono tracking-widest uppercase text-sm">
+                        {isEvading ? "CATCH ME!" : "SEND WHATSAPP"}
+                        {!isEvading && <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />}
+                      </span>
+                      <div className="absolute inset-0 border border-white/20 rounded-xl"></div>
+                      <div className="absolute inset-0 border border-white/0 group-hover:border-white/40 rounded-xl transition-colors duration-300 blur-[2px]"></div>
+                    </button>
+                  </div>
+                </div>
               </form>
             </motion.div>
 
